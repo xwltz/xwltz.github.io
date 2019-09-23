@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>xwltzの技术小站</title>
+  
+  <subtitle>个人网站</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.xwltz.top/"/>
+  <updated>2019-02-20T07:26:42.861Z</updated>
+  <id>http://www.xwltz.top/</id>
+  
+  <author>
+    <name>xwltz</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>my new post</title>
+    <link href="http://www.xwltz.top/2019/02/16/gitee/"/>
+    <id>http://www.xwltz.top/2019/02/16/gitee/</id>
+    <published>2019-02-16T07:51:11.000Z</published>
+    <updated>2019-02-20T07:26:42.861Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="xwltzblog"><a href="#xwltzblog" class="headerlink" title="xwltzblog"></a>xwltzblog</h1><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>{<strong>以下是码云平台说明，您可以替换此简介</strong><br>码云是开源中国推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台<br>无论是个人、团队、或是企业，都能够用码云实现代码托管、项目管理、协作开发。企业项目请看 <a href="https://gitee.com/enterprises" target="_blank" rel="noopener">https://gitee.com/enterprises</a>}</p><h4 id="软件架构"><a href="#软件架构" class="headerlink" title="软件架构"></a>软件架构</h4><p>软件架构说明</p><h4 id="安装教程"><a href="#安装教程" class="headerlink" title="安装教程"></a>安装教程</h4><ol><li>xxxx</li><li>xxxx</li><li>xxxx</li></ol><h4 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h4><ol><li>xxxx</li><li>xxxx</li><li>xxxx</li></ol><h4 id="参与贡献"><a href="#参与贡献" class="headerlink" title="参与贡献"></a>参与贡献</h4><ol><li>Fork 本仓库</li><li>新建 Feat_xxx 分支</li><li>提交代码</li><li>新建 Pull Request</li></ol><h4 id="码云特技"><a href="#码云特技" class="headerlink" title="码云特技"></a>码云特技</h4><ol><li>使用 Readme_XXX.md 来支持不同的语言，例如 Readme_en.md, Readme_zh.md</li><li>码云官方博客 <a href="https://blog.gitee.com" target="_blank" rel="noopener">blog.gitee.com</a></li><li>你可以 <a href="https://gitee.com/explore" target="_blank" rel="noopener">https://gitee.com/explore</a> 这个地址来了解码云上的优秀开源项目</li><li><a href="https://gitee.com/gvp" target="_blank" rel="noopener">GVP</a> 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目</li><li>码云官方提供的使用手册 <a href="https://gitee.com/help" target="_blank" rel="noopener">https://gitee.com/help</a></li><li>码云封面人物是一档用来展示码云会员风采的栏目 <a href="https://gitee.com/gitee-stars/" target="_blank" rel="noopener">https://gitee.com/gitee-stars/</a></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;xwltzblog&quot;&gt;&lt;a href=&quot;#xwltzblog&quot; class=&quot;headerlink&quot; title=&quot;xwltzblog&quot;&gt;&lt;/a&gt;xwltzblog&lt;/h1&gt;&lt;h4 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; 
+      
+    
+    </summary>
+    
+      <category term="小试牛刀" scheme="http://www.xwltz.top/categories/%E5%B0%8F%E8%AF%95%E7%89%9B%E5%88%80/"/>
+    
+    
+      <category term="markdown" scheme="http://www.xwltz.top/tags/markdown/"/>
+    
+      <category term="文章" scheme="http://www.xwltz.top/tags/%E6%96%87%E7%AB%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>my new post</title>
+    <link href="http://www.xwltz.top/2019/02/14/my-new-post/"/>
+    <id>http://www.xwltz.top/2019/02/14/my-new-post/</id>
+    <published>2019-02-14T06:35:11.000Z</published>
+    <updated>2019-02-20T06:33:24.582Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="11-08-项目升级说明"><a href="#11-08-项目升级说明" class="headerlink" title="11-08 项目升级说明"></a>11-08 项目升级说明</h4><ol><li>手机拖拽图文列表首行模式可以设置是不是推荐或者热门（单选）</li><li>手机拖拽列表模块排序加上按时间、点击量</li><li>手机拖拽标题栏图标颜色属性（其他组件也是如此）</li><li>手机拖拽搜索框样式调整</li><li>手机拖拽项目独立部署和CMS通过接口进行数据交互</li><li>手机拖拽内置在CMS中将组件模块放在底部，并修改界面显示效果样式</li><li>解决可能存在的跨域问题</li><li>解决网站接口统一访问权限问题</li><li>在CMS系统中，结合手机拖拽功能，实现手机模板文件的生成（已经包含标签文件）</li></ol><a id="more"></a><h4 id="更新记录"><a href="#更新记录" class="headerlink" title="更新记录"></a>更新记录</h4><blockquote><p>2017-11-15</p></blockquote><ol><li>新增 手机拖拽图文列表首行模式可以设置是不是推荐或者热门（单选）</li><li>新增 手机拖拽列表模块排序加上按时间、点击量</li><li>新增 手机拖拽标题栏图标颜色属性（其他组件也是如此）</li><li>新增 页面设置</li><li>调整 特殊组件 特殊处理</li><li>优化组件</li><li>优化css</li><li>优化js</li></ol><blockquote><p>2017-11-09</p></blockquote><ol><li>新增 网站导航可以选择</li></ol><blockquote><p>2017-11-09</p></blockquote><ol><li>删除无用文件和样式，并压缩JS和CSS代码</li><li>优化图标库 资源请求方式改为CDN模式 删除ICONDEFAULT的 减少流量和项目体积</li><li>完全去除iview组件库 替换为Element-UI组件库</li><li>由原本的4.59mb减少至1.35m 缩小体积70%</li></ol><blockquote><p>2017-11-08</p></blockquote><ol><li>优化组件</li><li>优化css</li><li>修复已知BUGS</li></ol><blockquote><p>2017-11-04</p></blockquote><ol><li>增加 <code>评论组件</code> ，<code>留言列表</code></li><li>优化css</li><li>修复已知BUGS</li><li>优化界面</li></ol><blockquote><p>2017-11-03</p></blockquote><ol><li>修改列表模块功能，新增相关列表数据的显示控制</li><li>增加 <code>评论组件</code> ，组件组成部分为：提交功能和列表展示功能</li><li>评论组件只完成属性部分</li><li>修复已知BUGS</li></ol><blockquote><p>2017-11-02</p></blockquote><ol><li>全新界面</li><li>制作网站导航组件</li><li>优化大量css样式</li></ol><blockquote><p>2017-11-01</p></blockquote><ol><li>新增 <code>留言</code> 组件</li><li>全新界面</li><li>优化大量css样式</li></ol><blockquote><p>2017-10-31</p></blockquote><ol><li>修复 组件与组件之间 样式不兼容问题</li></ol><blockquote><p>2017-10-30</p></blockquote><ol><li>替换 <code>颜色选择器</code> 组件</li><li>移除多余组件</li><li>下载列表组件 整合到列表模块中</li><li>优化 代码可读性</li><li>新增 图片轮播 可以修改样式</li></ol><blockquote><p>2017-10-28</p></blockquote><ol><li>新增 <code>客服组件</code></li><li>新增 <code>底部导航</code></li><li>优化 特殊组件的展现方式</li><li>修改已知Bugs</li></ol><blockquote><p>2017-10-27</p></blockquote><ol><li>新增 <code>搜索框组件</code></li><li>新增 <code>固定搜索框组件</code></li><li>新增 <code>下载列表组件</code></li><li>新增 <code>图文列表组件</code>、<code>首行图文列表组件</code>、<code>产品列表</code></li><li>新增 <code>返回顶部组件</code></li><li>修改视频列表、图片列表、文字列表、图文列表、首行图文列表、产品列表融合到一个组件中</li><li>修改已知Bugs</li><li>增加组件的稳定性</li></ol><blockquote><p>2017-10-26</p></blockquote><ol><li>新增 <code>列表模块组件</code></li><li>新增 <code>默认字体图标库</code></li></ol><blockquote><p>2017-10-25</p></blockquote><ol><li>优化组件列表的存储和读取方式（sessionStorage方式）</li><li>优化代码风格</li></ol><blockquote><p>2017-10-24</p></blockquote><ol><li>新增 [ <code>辅助线</code>、<code>辅助空白线</code>、<code>内容展示</code> ] 组件</li><li>更新 <code>标题栏</code> 组件</li><li>修复已经Bugs</li></ol><blockquote><p>2017-10-23</p></blockquote><ol><li>重构项目文件结构</li><li>封装通用代码</li><li>新增组件加载入口</li><li>添加代码注释</li><li>修复已知Bugs</li><li>组件加载方式 改为动态加载 减少代码量</li><li>优化css</li><li>新增 [ <code>图片导航</code>、<code>视频模块</code> ] 组件</li><li>修改 <code>视频</code> 组件新样式</li></ol><blockquote><p>2017-10-20</p></blockquote><ol><li>完成 [ <code>轮播图</code>、<code>字体库</code>、<code>图标导航</code>、<code>页脚</code>、<code>单图组</code>、<code>图片模块</code>、<code>标题</code>、<code>视频</code>、<code>地图</code> ] 组件</li><li>封装常用api （utils.js api.js）</li><li>已完成 保存功能</li><li>已完成 保存预览功能</li><li>修复已知Bugs</li></ol><blockquote><p>2017-10-19</p></blockquote><ol><li>初始化项目</li><li>封装常用api</li><li>整理所属静态文件</li><li>修复已知Bugs</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(&quot;Hello World&quot;)</span><br></pre></td></tr></table></figure><h4 id="组件完成进度"><a href="#组件完成进度" class="headerlink" title="组件完成进度"></a>组件完成进度</h4><table><thead><tr><th style="text-align:center">序号</th><th style="text-align:left">组件名称</th><th style="text-align:center">版本号</th><th style="text-align:center">是否完成</th><th style="text-align:center">更新日期</th></tr></thead><tbody><tr><td style="text-align:center">1</td><td style="text-align:left">图片轮播</td><td style="text-align:center"><code>v1.0.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-10-20</td></tr><tr><td style="text-align:center">2</td><td style="text-align:left">辅助空白</td><td style="text-align:center"><code>v1.0.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-10-24</td></tr><tr><td style="text-align:center">3</td><td style="text-align:left">底部导航</td><td style="text-align:center"><code>v1.0.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-10-28</td></tr><tr><td style="text-align:center">4</td><td style="text-align:left">评论</td><td style="text-align:center"><code>v1.0.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-11-03</td></tr><tr><td style="text-align:center">5</td><td style="text-align:left">内容展示</td><td style="text-align:center"><code>v1.1.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-10-26</td></tr><tr><td style="text-align:center">6</td><td style="text-align:left">留言</td><td style="text-align:center"><code>v1.0.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-11-01</td></tr><tr><td style="text-align:center">7</td><td style="text-align:left">留言列表</td><td style="text-align:center"><code>v1.0.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-11-04</td></tr><tr><td style="text-align:center">8</td><td style="text-align:left">图标导航</td><td style="text-align:center"><code>v1.1.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-10-24</td></tr><tr><td style="text-align:center">9</td><td style="text-align:left">图片导航</td><td style="text-align:center"><code>v1.0.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-10-23</td></tr><tr><td style="text-align:center">10</td><td style="text-align:left">客服</td><td style="text-align:center"><code>v1.1.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-10-28</td></tr><tr><td style="text-align:center">11</td><td style="text-align:left">辅助线</td><td style="text-align:center"><code>v1.0.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-10-24</td></tr><tr><td style="text-align:center">12</td><td style="text-align:left">列表模块</td><td style="text-align:center"><code>v1.2.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-10-30</td></tr><tr><td style="text-align:center">13</td><td style="text-align:left">地图</td><td style="text-align:center"><code>v1.0.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-10-20</td></tr><tr><td style="text-align:center">14</td><td style="text-align:left">网站导航</td><td style="text-align:center"><code>v1.0.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-11-02</td></tr><tr><td style="text-align:center">15</td><td style="text-align:left">页脚</td><td style="text-align:center"><code>v1.1.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-10-26</td></tr><tr><td style="text-align:center">16</td><td style="text-align:left">图片</td><td style="text-align:center"><code>v1.0.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-10-20</td></tr><tr><td style="text-align:center">17</td><td style="text-align:left">搜索框</td><td style="text-align:center"><code>v1.0.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-10-27</td></tr><tr><td style="text-align:center">18</td><td style="text-align:left">固定搜索框</td><td style="text-align:center"><code>v1.0.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-10-27</td></tr><tr><td style="text-align:center">19</td><td style="text-align:left">标题栏</td><td style="text-align:center"><code>v1.1.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-10-24</td></tr><tr><td style="text-align:center">20</td><td style="text-align:left">返回顶部</td><td style="text-align:center"><code>v1.1.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-10-28</td></tr><tr><td style="text-align:center">21</td><td style="text-align:left">视频</td><td style="text-align:center"><code>v1.0.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-10-20</td></tr><tr><td style="text-align:center">21</td><td style="text-align:left">字体库</td><td style="text-align:center"><code>v1.2.0</code></td><td style="text-align:center">[√]</td><td style="text-align:center">2017-10-26</td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;11-08-项目升级说明&quot;&gt;&lt;a href=&quot;#11-08-项目升级说明&quot; class=&quot;headerlink&quot; title=&quot;11-08 项目升级说明&quot;&gt;&lt;/a&gt;11-08 项目升级说明&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;手机拖拽图文列表首行模式可以设置是不是推荐或者热门（单选）&lt;/li&gt;
+&lt;li&gt;手机拖拽列表模块排序加上按时间、点击量&lt;/li&gt;
+&lt;li&gt;手机拖拽标题栏图标颜色属性（其他组件也是如此）&lt;/li&gt;
+&lt;li&gt;手机拖拽搜索框样式调整&lt;/li&gt;
+&lt;li&gt;手机拖拽项目独立部署和CMS通过接口进行数据交互&lt;/li&gt;
+&lt;li&gt;手机拖拽内置在CMS中将组件模块放在底部，并修改界面显示效果样式&lt;/li&gt;
+&lt;li&gt;解决可能存在的跨域问题&lt;/li&gt;
+&lt;li&gt;解决网站接口统一访问权限问题&lt;/li&gt;
+&lt;li&gt;在CMS系统中，结合手机拖拽功能，实现手机模板文件的生成（已经包含标签文件）&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="小试牛刀" scheme="http://www.xwltz.top/categories/%E5%B0%8F%E8%AF%95%E7%89%9B%E5%88%80/"/>
+    
+    
+      <category term="文章" scheme="http://www.xwltz.top/tags/%E6%96%87%E7%AB%A0/"/>
+    
+      <category term="new" scheme="http://www.xwltz.top/tags/new/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>日常记录</title>
+    <link href="http://www.xwltz.top/2019/02/14/works/"/>
+    <id>http://www.xwltz.top/2019/02/14/works/</id>
+    <published>2019-02-14T06:35:11.000Z</published>
+    <updated>2019-09-23T03:51:49.238Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li style="list-style: none"><input type="checkbox" checked> 爱纽牧 中文PC站 - 张翔维 - 2019-02-25</li><li style="list-style: none"><input type="checkbox" checked> 东方集团 在线招聘表单制作(在线申请功能) - 王广瑞 - 2019-02-27</li><li style="list-style: none"><input type="checkbox" checked> 爱纽牧 英文PC站 - 张翔维 - 2019-02-28</li><li style="list-style: none"><input type="checkbox" checked> 绿建 在线订奶 表单开发 - 王广瑞 2019-03-02</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li style=&quot;list-style: none&quot;&gt;&lt;input type=&quot;checkbox&quot; checked&gt; 爱纽牧 中文PC站 - 张翔维 - 2019-02-25&lt;/li&gt;
+&lt;li style=&quot;list-style: none&quot;&gt;&lt;input type
+      
+    
+    </summary>
+    
+      <category term="小试牛刀" scheme="http://www.xwltz.top/categories/%E5%B0%8F%E8%AF%95%E7%89%9B%E5%88%80/"/>
+    
+    
+      <category term="文章" scheme="http://www.xwltz.top/tags/%E6%96%87%E7%AB%A0/"/>
+    
+      <category term="日志" scheme="http://www.xwltz.top/tags/%E6%97%A5%E5%BF%97/"/>
+    
+  </entry>
+  
+</feed>

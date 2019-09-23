@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+  <meta name="description" content="11-08 项目升级说明 手机拖拽图文列表首行模式可以设置是不是推荐或者热门（单选） 手机拖拽列表模块排序加上按时间、点击量 手机拖拽标题栏图标颜色属性（其他组件也是如此） 手机拖拽搜索框样式调整 手机拖拽项目独立部署和CMS通过接口进行数据交互 手机拖拽内置在CMS中将组件模块放在底部，并修改界面显示效果样式 解决可能存在的跨域问题 解决网站接口统一访问权限问题 在CMS系统中，结合手机拖拽功能">
+<meta name="keywords" content="文章,new">
+<meta property="og:type" content="article">
+<meta property="og:title" content="my new post">
+<meta property="og:url" content="http://www.xwltz.top/2019/02/14/my-new-post/index.html">
+<meta property="og:site_name" content="xwltzの技术小站">
+<meta property="og:description" content="11-08 项目升级说明 手机拖拽图文列表首行模式可以设置是不是推荐或者热门（单选） 手机拖拽列表模块排序加上按时间、点击量 手机拖拽标题栏图标颜色属性（其他组件也是如此） 手机拖拽搜索框样式调整 手机拖拽项目独立部署和CMS通过接口进行数据交互 手机拖拽内置在CMS中将组件模块放在底部，并修改界面显示效果样式 解决可能存在的跨域问题 解决网站接口统一访问权限问题 在CMS系统中，结合手机拖拽功能">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-20T06:33:24.582Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="my new post">
+<meta name="twitter:description" content="11-08 项目升级说明 手机拖拽图文列表首行模式可以设置是不是推荐或者热门（单选） 手机拖拽列表模块排序加上按时间、点击量 手机拖拽标题栏图标颜色属性（其他组件也是如此） 手机拖拽搜索框样式调整 手机拖拽项目独立部署和CMS通过接口进行数据交互 手机拖拽内置在CMS中将组件模块放在底部，并修改界面显示效果样式 解决可能存在的跨域问题 解决网站接口统一访问权限问题 在CMS系统中，结合手机拖拽功能">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="xwltzの技术小站" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://www.xwltz.top/2019/02/14/my-new-post/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>my new post | xwltzの技术小站</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9d4e3b681919997e4fa26e68af686583";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/xwltz" target="_blank" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">xwltzの技术小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">个人网站</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-hot">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/hot/" rel="section"><i class="menu-item-icon fa fa-fw fa-signal"></i> <br>排行</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.xwltz.top/2019/02/14/my-new-post/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xwltz">
+      <meta itemprop="description" content="一枚煎熬6年.net, java, nodejs开发经验的全栈开发攻城狮兼系统架构狮兼项目经理兼产品汪。">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xwltzの技术小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">my new post
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-14 14:35:11" itemprop="dateCreated datePublished" datetime="2019-02-14T14:35:11+08:00">2019-02-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-02-20 14:33:24" itemprop="dateModified" datetime="2019-02-20T14:33:24+08:00">2019-02-20</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/小试牛刀/" itemprop="url" rel="index"><span itemprop="name">小试牛刀</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/02/14/my-new-post/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/14/my-new-post/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/02/14/my-new-post/" class="leancloud_visitors" data-flag-title="my new post">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count">℃</span>
+            </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2.3k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="11-08-项目升级说明"><a href="#11-08-项目升级说明" class="headerlink" title="11-08 项目升级说明"></a>11-08 项目升级说明</h4><ol>
+<li>手机拖拽图文列表首行模式可以设置是不是推荐或者热门（单选）</li>
+<li>手机拖拽列表模块排序加上按时间、点击量</li>
+<li>手机拖拽标题栏图标颜色属性（其他组件也是如此）</li>
+<li>手机拖拽搜索框样式调整</li>
+<li>手机拖拽项目独立部署和CMS通过接口进行数据交互</li>
+<li>手机拖拽内置在CMS中将组件模块放在底部，并修改界面显示效果样式</li>
+<li>解决可能存在的跨域问题</li>
+<li>解决网站接口统一访问权限问题</li>
+<li>在CMS系统中，结合手机拖拽功能，实现手机模板文件的生成（已经包含标签文件）</li>
+</ol>
+<a id="more"></a>
+<h4 id="更新记录"><a href="#更新记录" class="headerlink" title="更新记录"></a>更新记录</h4><blockquote>
+<p>2017-11-15</p>
+</blockquote>
+<ol>
+<li>新增 手机拖拽图文列表首行模式可以设置是不是推荐或者热门（单选）</li>
+<li>新增 手机拖拽列表模块排序加上按时间、点击量</li>
+<li>新增 手机拖拽标题栏图标颜色属性（其他组件也是如此）</li>
+<li>新增 页面设置</li>
+<li>调整 特殊组件 特殊处理</li>
+<li>优化组件</li>
+<li>优化css</li>
+<li>优化js</li>
+</ol>
+<blockquote>
+<p>2017-11-09</p>
+</blockquote>
+<ol>
+<li>新增 网站导航可以选择</li>
+</ol>
+<blockquote>
+<p>2017-11-09</p>
+</blockquote>
+<ol>
+<li>删除无用文件和样式，并压缩JS和CSS代码</li>
+<li>优化图标库 资源请求方式改为CDN模式 删除ICONDEFAULT的 减少流量和项目体积</li>
+<li>完全去除iview组件库 替换为Element-UI组件库</li>
+<li>由原本的4.59mb减少至1.35m 缩小体积70%</li>
+</ol>
+<blockquote>
+<p>2017-11-08</p>
+</blockquote>
+<ol>
+<li>优化组件</li>
+<li>优化css</li>
+<li>修复已知BUGS</li>
+</ol>
+<blockquote>
+<p>2017-11-04</p>
+</blockquote>
+<ol>
+<li>增加 <code>评论组件</code> ，<code>留言列表</code></li>
+<li>优化css</li>
+<li>修复已知BUGS</li>
+<li>优化界面</li>
+</ol>
+<blockquote>
+<p>2017-11-03</p>
+</blockquote>
+<ol>
+<li>修改列表模块功能，新增相关列表数据的显示控制</li>
+<li>增加 <code>评论组件</code> ，组件组成部分为：提交功能和列表展示功能</li>
+<li>评论组件只完成属性部分</li>
+<li>修复已知BUGS</li>
+</ol>
+<blockquote>
+<p>2017-11-02</p>
+</blockquote>
+<ol>
+<li>全新界面</li>
+<li>制作网站导航组件</li>
+<li>优化大量css样式</li>
+</ol>
+<blockquote>
+<p>2017-11-01</p>
+</blockquote>
+<ol>
+<li>新增 <code>留言</code> 组件</li>
+<li>全新界面</li>
+<li>优化大量css样式</li>
+</ol>
+<blockquote>
+<p>2017-10-31</p>
+</blockquote>
+<ol>
+<li>修复 组件与组件之间 样式不兼容问题</li>
+</ol>
+<blockquote>
+<p>2017-10-30</p>
+</blockquote>
+<ol>
+<li>替换 <code>颜色选择器</code> 组件</li>
+<li>移除多余组件</li>
+<li>下载列表组件 整合到列表模块中</li>
+<li>优化 代码可读性</li>
+<li>新增 图片轮播 可以修改样式</li>
+</ol>
+<blockquote>
+<p>2017-10-28</p>
+</blockquote>
+<ol>
+<li>新增 <code>客服组件</code></li>
+<li>新增 <code>底部导航</code></li>
+<li>优化 特殊组件的展现方式</li>
+<li>修改已知Bugs</li>
+</ol>
+<blockquote>
+<p>2017-10-27</p>
+</blockquote>
+<ol>
+<li>新增 <code>搜索框组件</code></li>
+<li>新增 <code>固定搜索框组件</code></li>
+<li>新增 <code>下载列表组件</code></li>
+<li>新增 <code>图文列表组件</code>、<code>首行图文列表组件</code>、<code>产品列表</code></li>
+<li>新增 <code>返回顶部组件</code></li>
+<li>修改视频列表、图片列表、文字列表、图文列表、首行图文列表、产品列表融合到一个组件中</li>
+<li>修改已知Bugs</li>
+<li>增加组件的稳定性</li>
+</ol>
+<blockquote>
+<p>2017-10-26</p>
+</blockquote>
+<ol>
+<li>新增 <code>列表模块组件</code></li>
+<li>新增 <code>默认字体图标库</code></li>
+</ol>
+<blockquote>
+<p>2017-10-25</p>
+</blockquote>
+<ol>
+<li>优化组件列表的存储和读取方式（sessionStorage方式）</li>
+<li>优化代码风格</li>
+</ol>
+<blockquote>
+<p>2017-10-24</p>
+</blockquote>
+<ol>
+<li>新增 [ <code>辅助线</code>、<code>辅助空白线</code>、<code>内容展示</code> ] 组件</li>
+<li>更新 <code>标题栏</code> 组件</li>
+<li>修复已经Bugs</li>
+</ol>
+<blockquote>
+<p>2017-10-23</p>
+</blockquote>
+<ol>
+<li>重构项目文件结构</li>
+<li>封装通用代码</li>
+<li>新增组件加载入口</li>
+<li>添加代码注释</li>
+<li>修复已知Bugs</li>
+<li>组件加载方式 改为动态加载 减少代码量</li>
+<li>优化css</li>
+<li>新增 [ <code>图片导航</code>、<code>视频模块</code> ] 组件</li>
+<li>修改 <code>视频</code> 组件新样式</li>
+</ol>
+<blockquote>
+<p>2017-10-20</p>
+</blockquote>
+<ol>
+<li>完成 [ <code>轮播图</code>、<code>字体库</code>、<code>图标导航</code>、<code>页脚</code>、<code>单图组</code>、<code>图片模块</code>、<code>标题</code>、<code>视频</code>、<code>地图</code> ] 组件</li>
+<li>封装常用api （utils.js api.js）</li>
+<li>已完成 保存功能</li>
+<li>已完成 保存预览功能</li>
+<li>修复已知Bugs</li>
+</ol>
+<blockquote>
+<p>2017-10-19</p>
+</blockquote>
+<ol>
+<li>初始化项目</li>
+<li>封装常用api</li>
+<li>整理所属静态文件</li>
+<li>修复已知Bugs</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(&quot;Hello World&quot;)</span><br></pre></td></tr></table></figure>
+<h4 id="组件完成进度"><a href="#组件完成进度" class="headerlink" title="组件完成进度"></a>组件完成进度</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:left">组件名称</th>
+<th style="text-align:center">版本号</th>
+<th style="text-align:center">是否完成</th>
+<th style="text-align:center">更新日期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:left">图片轮播</td>
+<td style="text-align:center"><code>v1.0.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-10-20</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:left">辅助空白</td>
+<td style="text-align:center"><code>v1.0.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-10-24</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:left">底部导航</td>
+<td style="text-align:center"><code>v1.0.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-10-28</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:left">评论</td>
+<td style="text-align:center"><code>v1.0.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-11-03</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:left">内容展示</td>
+<td style="text-align:center"><code>v1.1.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-10-26</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:left">留言</td>
+<td style="text-align:center"><code>v1.0.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-11-01</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:left">留言列表</td>
+<td style="text-align:center"><code>v1.0.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-11-04</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:left">图标导航</td>
+<td style="text-align:center"><code>v1.1.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-10-24</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:left">图片导航</td>
+<td style="text-align:center"><code>v1.0.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-10-23</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:left">客服</td>
+<td style="text-align:center"><code>v1.1.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-10-28</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:left">辅助线</td>
+<td style="text-align:center"><code>v1.0.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-10-24</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:left">列表模块</td>
+<td style="text-align:center"><code>v1.2.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-10-30</td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td style="text-align:left">地图</td>
+<td style="text-align:center"><code>v1.0.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-10-20</td>
+</tr>
+<tr>
+<td style="text-align:center">14</td>
+<td style="text-align:left">网站导航</td>
+<td style="text-align:center"><code>v1.0.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-11-02</td>
+</tr>
+<tr>
+<td style="text-align:center">15</td>
+<td style="text-align:left">页脚</td>
+<td style="text-align:center"><code>v1.1.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-10-26</td>
+</tr>
+<tr>
+<td style="text-align:center">16</td>
+<td style="text-align:left">图片</td>
+<td style="text-align:center"><code>v1.0.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-10-20</td>
+</tr>
+<tr>
+<td style="text-align:center">17</td>
+<td style="text-align:left">搜索框</td>
+<td style="text-align:center"><code>v1.0.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-10-27</td>
+</tr>
+<tr>
+<td style="text-align:center">18</td>
+<td style="text-align:left">固定搜索框</td>
+<td style="text-align:center"><code>v1.0.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-10-27</td>
+</tr>
+<tr>
+<td style="text-align:center">19</td>
+<td style="text-align:left">标题栏</td>
+<td style="text-align:center"><code>v1.1.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-10-24</td>
+</tr>
+<tr>
+<td style="text-align:center">20</td>
+<td style="text-align:left">返回顶部</td>
+<td style="text-align:center"><code>v1.1.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-10-28</td>
+</tr>
+<tr>
+<td style="text-align:center">21</td>
+<td style="text-align:left">视频</td>
+<td style="text-align:center"><code>v1.0.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-10-20</td>
+</tr>
+<tr>
+<td style="text-align:center">21</td>
+<td style="text-align:left">字体库</td>
+<td style="text-align:center"><code>v1.2.0</code></td>
+<td style="text-align:center">[√]</td>
+<td style="text-align:center">2017-10-26</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    
+
+    <div>
+      
+        
+    <style>
+    .passage_end::after{
+        content: "- The End -";
+        text-align:center;
+        color: #252525;
+        display: block;
+        font-size:26px;
+        font-weight:bold;
+        font-family: Vladimir Script;
+    }
+    </style>
+    <div class="passage_end" style="margin-top:25px;text-align:center;color:#333;font-size:16px;">感谢您的阅读</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/sweetalert/2.1.2/sweetalert.min.js"></script>
+  <script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
+  <p><span>本文标题:</span><a href="/2019/02/14/my-new-post/">my new post</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 xwltz 的个人博客">xwltz</a></p>
+  <p><span>发布时间:</span>2019年02月14日 - 14:02</p>
+  <p><span>最后更新:</span>2019年02月20日 - 14:02</p>
+  <p><span>原始链接:</span><a href="/2019/02/14/my-new-post/" title="my new post">http://www.xwltz.top/2019/02/14/my-new-post/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.xwltz.top/2019/02/14/my-new-post/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new ClipboardJS('.fa-clipboard');
+	  $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	    });
+    });  
+</script>
+
+      
+    </div>
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+  <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.png" alt="xwltz wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎您扫一扫上方微信二维码，和我技术分享、探讨！</div>
+</div>
+
+      </div>
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="xwltz 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="xwltz 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/文章/" rel="tag"><i class="fa fa-fw fa-tag"></i> 文章</a>
+          
+            <a href="/tags/new/" rel="tag"><i class="fa fa-fw fa-tag"></i> new</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/14/works/" rel="next" title="日常记录">
+                <i class="fa fa-chevron-left"></i> 日常记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/16/gitee/" rel="prev" title="my new post">
+                my new post <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="xwltz">
+            
+              <p class="site-author-name" itemprop="name">xwltz</p>
+              <p class="site-description motion-element" itemprop="description" style="margin-bottom:5px;">一枚煎熬6年.net, java, nodejs开发经验的全栈开发攻城狮兼系统架构狮兼项目经理兼产品汪。</p>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <p class="site-description motion-element" style="display:block !important;">
+              <i class="fa fa-fw fa-wifi"></i>
+              本站总访问量 <span id="busuanzi_value_site_pv" style="font-weight:700;"></span> 次
+            </p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/xwltz" title="GitHub &rarr; https://github.com/xwltz" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://gitee.com/xwltz" title="Gitee &rarr; https://gitee.com/xwltz" rel="noopener" target="_blank"><i class="fa fa-fw fa-git"></i>Gitee</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.xwltz.top" title="WebSite &rarr; https://www.xwltz.top"><i class="fa fa-fw fa-at"></i>WebSite</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:61488281@qq.com" title="E-Mail &rarr; mailto:61488281@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#11-08-项目升级说明"><span class="nav-number">1.</span> <span class="nav-text">11-08 项目升级说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更新记录"><span class="nav-number">2.</span> <span class="nav-text">更新记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组件完成进度"><span class="nav-number">3.</span> <span class="nav-text">组件完成进度</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">  <a href="http://www.miitbeian.gov.cn" rel="noopener" target="_blank">苏ICP备17049506号 </a><br>&copy; 2012-2019 MyBlog – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xwltz</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">3k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">3 分钟</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.0</div>
+
+
+
+
+<!-- 在网页底部添加网站运行时间 -->
+<div>
+  <span id="timeDate">载入天数...</span>
+  <span id="times">载入时分秒...</span>
+</div>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("01/10/2012 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="120" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: false,
+    appId: 'o4QxN6nbiMgINL8f7fMM9q22-gzGzoHsz',
+    appKey: 'Q1rChcNWoBbKCLoAMShDheQW',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+</body>
+</html>
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>
