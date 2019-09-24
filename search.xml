@@ -1,27 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[my new post]]></title>
+    <title><![CDATA[gitee]]></title>
     <url>%2F2019%2F02%2F16%2Fgitee%2F</url>
     <content type="text"><![CDATA[xwltzblog介绍{以下是码云平台说明，您可以替换此简介码云是开源中国推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台无论是个人、团队、或是企业，都能够用码云实现代码托管、项目管理、协作开发。企业项目请看 https://gitee.com/enterprises} 软件架构软件架构说明 安装教程 xxxx xxxx xxxx 使用说明 xxxx xxxx xxxx 参与贡献 Fork 本仓库 新建 Feat_xxx 分支 提交代码 新建 Pull Request 码云特技 使用 Readme_XXX.md 来支持不同的语言，例如 Readme_en.md, Readme_zh.md 码云官方博客 blog.gitee.com 你可以 https://gitee.com/explore 这个地址来了解码云上的优秀开源项目 GVP 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目 码云官方提供的使用手册 https://gitee.com/help 码云封面人物是一档用来展示码云会员风采的栏目 https://gitee.com/gitee-stars/]]></content>
       <categories>
         <category>小试牛刀</category>
       </categories>
       <tags>
-        <tag>文章</tag>
         <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[日常记录]]></title>
-    <url>%2F2019%2F02%2F14%2Fworks%2F</url>
-    <content type="text"><![CDATA[爱纽牧 中文PC站 - 张翔维 - 2019-02-25 东方集团 在线招聘表单制作(在线申请功能) - 王广瑞 - 2019-02-27 爱纽牧 英文PC站 - 张翔维 - 2019-02-28 绿建 在线订奶 表单开发 - 王广瑞 2019-03-02]]></content>
-      <categories>
-        <category>小试牛刀</category>
-      </categories>
-      <tags>
         <tag>文章</tag>
-        <tag>日志</tag>
       </tags>
   </entry>
   <entry>

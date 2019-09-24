@@ -353,7 +353,7 @@ body {
   position: relative;
 }
 .header-inner {
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 100px 0 70px;
   width: calc(100% - 20px);
 }
@@ -1740,6 +1740,13 @@ article:last-child .post-eof {
 #qr p {
   text-align: center;
 }
+.post-copyright {
+  background-color: #f9f9f9;
+  border-left: 3px solid #ff1700;
+  list-style: none;
+  margin: 2em 0 0;
+  padding: 0.5em 1em;
+}
 .sidebar {
   background: #222;
   bottom: 0;
@@ -1820,7 +1827,7 @@ article:last-child .post-eof {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #016301;
+  background: #017aff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2816,6 +2823,8 @@ ul.breadcrumb li + li:last-child {
   border-radius: initial;
   box-shadow: initial;
   padding: initial;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .post-block {
   background: #fff;
@@ -2902,6 +2911,8 @@ ul.breadcrumb li + li:last-child {
 @media (min-width: 768px) and (max-width: 991px) {
   .content-wrap {
     padding: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
   .posts-expand {
     margin: initial;
@@ -2928,6 +2939,8 @@ ul.breadcrumb li + li:last-child {
 @media (max-width: 767px) {
   .content-wrap {
     padding: 8px;
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
   .posts-expand {
     margin: initial;
@@ -2950,5 +2963,20 @@ ul.breadcrumb li + li:last-child {
   }
   .pagination {
     margin: 8px 0 0;
+  }
+}
+body {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -ms-background-size: cover;
+}
+@media (max-width: 991px) {
+  .header-inner {
+    margin: 0 auto;
   }
 }

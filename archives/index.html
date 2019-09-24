@@ -19,8 +19,8 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
 
 
 <script id="hexo-configurations">
@@ -312,7 +312,7 @@
         
           
         
-        <span class="collection-header">嗯..! 目前共计 3 篇日志。 继续努力。</span>
+        <span class="collection-header">嗯..! 目前共计 2 篇日志。 继续努力。</span>
       </div>
       
 
@@ -334,7 +334,7 @@
       <h2 class="post-title">
         
           <a class="post-title-link" href="/2019/02/16/gitee/" itemprop="url">
-            <span itemprop="name">my new post</span>
+            <span itemprop="name">gitee</span>
           </a>
         
       </h2>
@@ -344,35 +344,6 @@
               datetime="2019-02-16T15:51:11+08:00"
               content="2019-02-16">
           02-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/02/14/works/" itemprop="url">
-            <span itemprop="name">日常记录</span>
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-02-14T14:35:11+08:00"
-              content="2019-02-14">
-          02-14
         </time>
       </div>
 
@@ -471,7 +442,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -509,9 +480,7 @@
         
           
         
-          
-        
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -584,7 +553,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">苏ICP备17049506号 </a>
-  <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a><br/>&copy; 2012-2019 MyBlog – <span itemprop="copyrightYear">2019</span>
+  <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" rel="noopener" target="_blank"> </a><br/>&copy; 2012-2019 xwltz~blog – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>
@@ -595,7 +564,7 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">3k</span>
+    <span title="站点总字数">2k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
@@ -653,7 +622,7 @@ setInterval("createtime()",250);
 
     
   
-  <script color='0,0,255' opacity='0.5' zIndex='-1' count='120' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='120' src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@latest/canvas-nest.min.js"></script>
   <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
@@ -696,7 +665,7 @@ setInterval("createtime()",250);
 
 
 <script>
-NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
   var GUEST = ['nick', 'mail', 'link'];
   var guest = 'nick,mail,link';
   guest = guest.split(',').filter(item => {
@@ -722,11 +691,24 @@ NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
 </body>
 </html>
 
-<!--引入Jquery的支持-->
-<script type="text/javascript" src="/lib/jquery/index.js"></script>
+<!--引入jquery的支持-->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<!--引入sweetalert的支持-->
+<script src="https://cdn.bootcss.com/sweetalert/2.1.2/sweetalert.min.js"></script>
+<!--引入clipboard的支持-->
+<script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
 
 <!--崩溃欺骗-->
 <script type="text/javascript" src="/js/crash_cheat.js"></script>
 
 <!-- 页面点击小红心，在末尾添加，避免找不到 -->
 <script type="text/javascript" src="/js/love.js"></script>
+
+<script>
+    var clipboard = new ClipboardJS('.fa-clipboard');
+    $(".fa-clipboard").click(function() {
+      clipboard.on('success', function() {
+        swal({ title: "", text: '复制成功', icon: "success", showConfirmButton: true });
+      });
+    });
+</script>
