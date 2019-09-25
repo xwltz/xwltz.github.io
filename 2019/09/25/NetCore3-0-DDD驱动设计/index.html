@@ -56,20 +56,20 @@
     sidebarPadding: 40
   };
 </script>
-  <meta name="description" content="一枚煎熬6年.net, java, nodejs开发经验的全栈开发攻城狮兼系统架构狮兼项目经理兼产品汪。">
-<meta name="keywords" content="个人,xwltz,网站,博客,技术,分享">
-<meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="http://www.xwltz.top/categories/index.html">
+  <meta name="description" content="基础设施层 基础设施层使用的相关知识：Code First ，EF Core，Autofac依赖注入，仓储模式的实现接口，领域服务的实现接口，缓存，以及各种基础工具类   Code First：使用Code First 数据迁移到数据库。常用的数据库迁移命令：Add-Migration 迁移名 —— 添加本次迁移Update-Database——将本次迁移到数据库Add-Migration Ini">
+<meta name="keywords" content=".netcore,DDD设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content=".NetCore3.0 DDD驱动设计">
+<meta property="og:url" content="http://www.xwltz.top/2019/09/25/NetCore3-0-DDD驱动设计/index.html">
 <meta property="og:site_name" content="xwltzの技术小站">
-<meta property="og:description" content="一枚煎熬6年.net, java, nodejs开发经验的全栈开发攻城狮兼系统架构狮兼项目经理兼产品汪。">
+<meta property="og:description" content="基础设施层 基础设施层使用的相关知识：Code First ，EF Core，Autofac依赖注入，仓储模式的实现接口，领域服务的实现接口，缓存，以及各种基础工具类   Code First：使用Code First 数据迁移到数据库。常用的数据库迁移命令：Add-Migration 迁移名 —— 添加本次迁移Update-Database——将本次迁移到数据库Add-Migration Ini">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-23T03:49:28.349Z">
+<meta property="og:updated_time" content="2019-09-25T04:01:12.992Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分类">
-<meta name="twitter:description" content="一枚煎熬6年.net, java, nodejs开发经验的全栈开发攻城狮兼系统架构狮兼项目经理兼产品汪。">
+<meta name="twitter:title" content=".NetCore3.0 DDD驱动设计">
+<meta name="twitter:description" content="基础设施层 基础设施层使用的相关知识：Code First ，EF Core，Autofac依赖注入，仓储模式的实现接口，领域服务的实现接口，缓存，以及各种基础工具类   Code First：使用Code First 数据迁移到数据库。常用的数据库迁移命令：Add-Migration 迁移名 —— 添加本次迁移Update-Database——将本次迁移到数据库Add-Migration Ini">
   <link rel="alternate" href="/atom.xml" title="xwltzの技术小站" type="application/atom+xml">
-  <link rel="canonical" href="http://www.xwltz.top/categories/">
+  <link rel="canonical" href="http://www.xwltz.top/2019/09/25/NetCore3-0-DDD驱动设计/">
 
 
 <script id="page-configurations">
@@ -77,13 +77,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
-    isPage: true,
+    isPost: true,
+    isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>分类 | xwltzの技术小站</title>
+  <title>.NetCore3.0 DDD驱动设计 | xwltzの技术小站</title>
   <meta name="generator" content="Hexo 3.9.0">
   
 
@@ -275,85 +275,272 @@
         <div class="content-wrap">
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
-    
-    
-    
-    <div class="post-block page">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">分类
-
-</h1>
-
-<div class="post-meta">
+      <article itemscope itemtype="http://schema.org/Article">
   
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://www.xwltz.top/2019/09/25/NetCore3-0-DDD驱动设计/">
 
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xwltz">
+      <meta itemprop="description" content="一枚煎熬6年.net, java, nodejs开发经验的全栈开发攻城狮兼系统架构狮兼项目经理兼产品汪。">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xwltzの技术小站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">.NetCore3.0 DDD驱动设计
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-25 11:53:20 / 修改时间：12:01:12" itemprop="dateCreated datePublished" datetime="2019-09-25T11:53:20+08:00">2019-09-25</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ASP-NET-CORE/" itemprop="url" rel="index"><span itemprop="name">ASP.NET CORE</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span id="/2019/09/25/NetCore3-0-DDD驱动设计/" class="post-meta-item leancloud_visitors" data-flag-title=".NetCore3.0 DDD驱动设计" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">评论数：</span>
+    
+    <a title="valine" href="/2019/09/25/NetCore3-0-DDD驱动设计/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/09/25/NetCore3-0-DDD驱动设计/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>1.3k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>1 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="基础设施层"><a href="#基础设施层" class="headerlink" title="基础设施层"></a>基础设施层</h4><blockquote>
+<p>基础设施层使用的相关知识：Code First ，EF Core，Autofac依赖注入，仓储模式的实现接口，领域服务的实现接口，缓存，以及各种基础工具类</p>
+</blockquote>
+<ol>
+<li>Code First：使用Code First 数据迁移到数据库。<br>常用的数据库迁移命令：<br>Add-Migration 迁移名 —— 添加本次迁移<br>Update-Database——将本次迁移到数据库<br>Add-Migration InitialCreate -IgnoreChanges -—— 创建一次空的数据迁移：已现在版本为起始点</li>
+<li>EF Core ：软删除 ——全局过滤删除的状态，AsNoTracking() ——不持久化到数据库时的查询使用 Any——查询判断使用Any ,Z.EntityFramework.Plus-——批量修改，删除，增删改查，简单封装异步 Anysnc Await 方法</li>
+<li>工具类，例如MD5，AutoMapperHelper，LamdaHelper，RedisHelper简单应用，读取配置文件,统一返回参数等。</li>
+<li>Redis缓存，多种数据类型，查询，插入效率高，Redis与数据库同步策略，先更新数据库在删除缓存，延时双删，（延时，根据数据查询的数据来判断延时的时间），使用StackExchange.Redis</li>
+</ol>
+<h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><blockquote>
+<p>应用层使用的相关知识：AutoMapper，Dto，Autofac依赖注入</p>
+</blockquote>
+<ol>
+<li>Dto：数据传输对象，主要是展现层和应用层传输数据</li>
+<li>AutoMapper：对象之间传输数据，先使用仓储查询出数据，然后通过AutoMapper转换成前端需要的数据返回</li>
+</ol>
+<h4 id="领域层"><a href="#领域层" class="headerlink" title="领域层"></a>领域层</h4><blockquote>
+<p>领域层使用的相关知识：实体，值对象，领域服务接口，仓储接口，聚合，Autofac依赖注入</p>
+</blockquote>
+<ol>
+<li>实体：有唯一的标识（唯一，不可变），包含业务逻辑，以及自身的验证，构造函数实例化，实体的Set应设置为私有的</li>
+<li>值对象：没有唯一的标识，用来描述一个东西的特征，代表是什么</li>
+<li>聚合：聚合根是实体，聚合是对象的组合，由聚合本身维护自身的一致性，封装业务逻辑，聚合尽量小，聚合之间通过唯一标识引用</li>
+<li>仓储：仓储是针对聚合的，封装领域逻辑，明确查询的意图，仓储中只维护聚合的状态，不进行持久化，仓储可以方便单元测试，更换ORM</li>
+<li>领域服务：，领域服务是无状态的，有些业务逻辑不好放在聚合里面的可以使用领域服务，多个聚合根协调，领域服务中可以使用仓储</li>
+<li>Autofac依赖注入：有利于项目层与层之间的解耦，方便单元测试，构造函数注入，依赖倒置，通过约定进行程序集的注入</li>
+</ol>
+<h4 id="展现层"><a href="#展现层" class="headerlink" title="展现层"></a>展现层</h4><ol>
+<li>展现层使用的相关知识：.Net Core WebApi ,MVC,JWT Swagger,日志异常的捕捉，模型的验证，Log4Net，Autofac依赖注入，过滤器</li>
+<li>JWT：JWT包含了使用.分隔的三部分： Header 头部 Payload 负载 Signature 签名，在前端每次请求加上JWT 签发的Token 来替代Session，进行访问页面的验证</li>
+<li>Swagger：可以使用Swagger来请求WebApi ，以及查看WebApi 接口，Swagger可以做接口文档</li>
+<li>Log4Net：日志异常的全局捕捉，记录日志到TXT中</li>
+<li>过滤器：使用过滤器来进行模型的验证 ，Log4Net的日志异常的全局捕捉，以及权限的访问</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      
+        <style>
+    .passage_end::after{
+        content: "- The End -";
+        text-align:center;
+        color: #252525;
+        display: block;
+        font-size:26px;
+        font-weight:bold;
+        font-family: Vladimir Script;
+    }
+</style>
+<div class="passage_end" style="margin-top:25px;text-align:center;color:#333;font-size:16px;">感谢您的阅读</div>
+      
+        
+      
+        <div id="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="xwltz 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="xwltz 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
 </div>
 
-</header>
+      
+        
+
+<div>
+  <ul class="post-copyright">
+    <li class="post-copyright-title">
+      <strong>本文标题： </strong>
+      .NetCore3.0 DDD驱动设计
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      xwltz
+      <span class="with-love" id="animate"><i class="fa fa-heart"></i></span>
+    </li>
+    <li class="post-copyright-release-time">
+      <strong>发布时间： </strong>
+      2019年09月25日 - 11:09:00
+    </li>
+    <li class="post-copyright-update-time">
+      <strong>最后更新： </strong>
+     2019年09月25日 - 12:09:99
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.xwltz.top/2019/09/25/NetCore3-0-DDD驱动设计/" title=".NetCore3.0 DDD驱动设计">http://www.xwltz.top/2019/09/25/NetCore3-0-DDD驱动设计/</a> &nbsp;
+      <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.xwltz.top/2019/09/25/NetCore3-0-DDD驱动设计/" aria-label="复制成功！"></i></span>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
 
       
-      
-      
-      <div class="post-body">
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/netcore/" rel="tag"># .netcore</a>
+            
+              <a href="/tags/DDD设计/" rel="tag"># DDD设计</a>
+            
+          </div>
         
-          <div class="category-all-page">
-            <div class="category-all-title">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
               
+                <a href="/2019/02/16/gitee/" rel="next" title="gitee">
+                  <i class="fa fa-chevron-left"></i> gitee
+                </a>
               
-                
-                  
-                
-              
-                
-                  
-                
-              
-              目前共计 2 个分类
             </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ASP-NET-CORE/">ASP.NET CORE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/小试牛刀/">小试牛刀</a><span class="category-list-count">2</span></li></ul>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
             </div>
           </div>
         
-      </div>
-      
-      
-      
-    </div>
+      </footer>
     
+  </div>
+  
+  
+  
+  </article>
 
-    
-    
-    
   </div>
 
 
@@ -393,6 +580,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#基础设施层"><span class="nav-number">1.</span> <span class="nav-text">基础设施层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用层"><span class="nav-number">2.</span> <span class="nav-text">应用层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#领域层"><span class="nav-number">3.</span> <span class="nav-text">领域层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#展现层"><span class="nav-number">4.</span> <span class="nav-text">展现层</span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
