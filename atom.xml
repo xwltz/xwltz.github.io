@@ -67,9 +67,9 @@
       <category term="小试牛刀" scheme="http://www.xwltz.top/categories/%E5%B0%8F%E8%AF%95%E7%89%9B%E5%88%80/"/>
     
     
-      <category term="markdown" scheme="http://www.xwltz.top/tags/markdown/"/>
-    
       <category term="文章" scheme="http://www.xwltz.top/tags/%E6%96%87%E7%AB%A0/"/>
+    
+      <category term="markdown" scheme="http://www.xwltz.top/tags/markdown/"/>
     
   </entry>
   
@@ -102,9 +102,9 @@
       <category term="小试牛刀" scheme="http://www.xwltz.top/categories/%E5%B0%8F%E8%AF%95%E7%89%9B%E5%88%80/"/>
     
     
-      <category term="文章" scheme="http://www.xwltz.top/tags/%E6%96%87%E7%AB%A0/"/>
-    
       <category term="new" scheme="http://www.xwltz.top/tags/new/"/>
+    
+      <category term="文章" scheme="http://www.xwltz.top/tags/%E6%96%87%E7%AB%A0/"/>
     
   </entry>
   
