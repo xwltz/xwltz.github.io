@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.xwltz.top/"/>
-  <updated>2019-10-24T08:31:22.304Z</updated>
+  <updated>2019-10-24T08:38:19.220Z</updated>
   <id>http://www.xwltz.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://www.xwltz.top/2019/10/24/docker/"/>
     <id>http://www.xwltz.top/2019/10/24/docker/</id>
     <published>2019-10-24T08:05:10.000Z</published>
-    <updated>2019-10-24T08:31:22.304Z</updated>
+    <updated>2019-10-24T08:38:19.220Z</updated>
     
     <content type="html"><![CDATA[<p>对于一个 .NET Core开发人员，你可能没有使用过Docker，但是你不可能没有听说过Docker。Docker是Github上最受欢迎的开源项目之一，它号称要成为所有云应用的基石，并把互联网升级到下一代。Docker是dotCloud公司开源的一款产品，从其诞生那一刻算起，在短短两三年时间里就成为了开源社区最火爆的项目。对于完全拥抱开源的.NET Core来说，它自然应该对Docker提供完美的支持。对于接下来的内容，我们假设你已经对Docker有了基本的了解，并且在你的机器上已经安装了Docker。</p><h3 id="一、创建一个ASP-NET-Core应用"><a href="#一、创建一个ASP-NET-Core应用" class="headerlink" title="一、创建一个ASP.NET Core应用"></a>一、创建一个ASP.NET Core应用</h3><p>我们将演示如何创建一个ASP.NET Core程序并将其编译成Docker镜像，并Docker环境针对该镜像创建一个容器来启动一个应用实例。简单起见，我们还是直接采用脚手架命令行的形式来创建这个ASP.NET Core应用。如下图1所示，我们执行dotnet new web命令在”d:\projects\helloworld”目录下创建一个空的ASP.NET Core应用。</p><p> <img src="https://ask.qcloudimg.com/http-save/yehe-1161266/q716abhgtb.png?imageView2/2/w/1620" alt="img"> </p><h3 id="二、定义Dokerfile"><a href="#二、定义Dokerfile" class="headerlink" title="二、定义Dokerfile"></a>二、定义Dokerfile</h3><p>我们现在需要将这个ASP.NET Core应用制作成一个Docker镜像，为此我们需要在项目根目录下创建一个Dockerfile文件（文件名就是Dokerfile，没有扩展名），并在该文件中定义如下的内容。如果我们对Dockerfile具有基本的了解，对于这个文件的内容应该不难理解。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"># 1. 指定编译和发布应用的镜像</span><br><span class="line">FROM mcr.microsoft.com/dotnet/core/sdk:3.0 AS build</span><br><span class="line"></span><br><span class="line"># 2. 指定（编译和发布）工作目录</span><br><span class="line">WORKDIR /app</span><br><span class="line"></span><br><span class="line"># 3. 拷贝.csproj到工作目录/app，然后执行dotnet restore恢复所有安装的NuGet包</span><br><span class="line">COPY *.csproj ./</span><br><span class="line">RUN dotnet restore</span><br><span class="line"></span><br><span class="line"># 4. 拷贝所有文件到工作目录(/app)，然后执行dotnet publish命令将应用发布到/app/out目录下</span><br><span class="line">COPY . ./</span><br><span class="line">RUN dotnet publish -c Release -o out</span><br><span class="line"></span><br><span class="line"># 5. 编译生成Docker镜像</span><br><span class="line"># 5.1.设置基础镜像</span><br><span class="line">FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS runtime</span><br><span class="line"></span><br><span class="line"># 5.2. 设置（运行）工作目录，并将发布文件拷贝到out子目录下</span><br><span class="line">WORKDIR /app</span><br><span class="line">COPY --from= build /app/out .</span><br><span class="line"></span><br><span class="line"># 5.3. 利用环境变量设置ASP.NET Core应用的监听地址</span><br><span class="line">ENV ASPNETCORE_URLS http://0.0.0.0:3721</span><br><span class="line"></span><br><span class="line"># 5.4. 执行dotnet命令启动ASP.NET Core应用</span><br><span class="line">ENTRYPOINT [&quot;dotnet&quot;, &quot;helloworld.dll&quot;]</span><br></pre></td></tr></table></figure><p>这个Dockerfile采用了一个中间层（build）来暂存ASP.NET Core MVC应用发布后的资源，其工作目录为”/app”。具体来说，这个层采用”microsoft/aspnetcore-build:2”作为基础镜像，我们先将定义项目的.csproj文件（helloworld.csproj）拷贝到当前工作目录，然后运行”dotnet restore”命令恢复所有注册在这个项目文件中的NuGet包。接下来我们将当前项目的所有文件拷贝到当前工作目录，并执行dotnet publish对整个项目进行编译发布（针对Release模式），发布后的资源被保存到目录”/app/out”中。</p><p>在真正将编译生成Docker镜像的时候，我们采用”mcr.microsoft.com/dotnet/core/aspnet:3.0”作为基础镜像，由于应用在上面进行了预先发布，所以我们只需要将发布后的所有文件拷贝到当前工作目录就可以了。接下来我们通过环境变量设置了ASP.NET Core应用的监听地址 “<a href="http://0.0.0.0:3721&quot;" target="_blank" rel="noopener">http://0.0.0.0:3721&quot;</a> 。 针对ENTRYPOINT的定义（ENTRYPOINT [“dotnet”, “helloworld.dll”]），我们知道当容器被启动的时候，”dotnet helloworld.dll”命令会被执行以启动这个ASP.NET Core应用。</p><h3 id="三、生成镜像"><a href="#三、生成镜像" class="headerlink" title="三、生成镜像"></a>三、生成镜像</h3><p>Dockerfile文件定义好之后，我们打开CMD命令行并切换到项目所在根目录（也就是Dockerfile文件所在的目录），然后执行”docker build -t helloworldapp .”命令，该命令会利用这个Dockerfile文件生成一个命名为helloworldapp”的Docker镜像。</p><p> <img src="https://ask.qcloudimg.com/http-save/yehe-1161266/jr931k59gi.png?imageView2/2/w/1620" alt="img"> </p><h3 id="四、启动容器"><a href="#四、启动容器" class="headerlink" title="四、启动容器"></a>四、启动容器</h3><p>既然Docker镜像已经被成功创建出来了，那么余下的工作就很简单了，我们只需要针对这个镜像创建对应的容器，最终的ASP.NET Core应用的启动就可以直接通过启动该容器来完成。如下图所示，我们执行”docker run -d -p 8080:3721 –name myapp helloworldapp”命令针对前面生成的Docker镜像（helloworldapp）创建并启动了一个命名为myapp（–name myapp）的容器。由于我们从外面访问这个应用，所以我们通过端口映射（-p 8080:3721）将内部监听端口3721映射为当前宿主机器的端口8080，所以我们利用地址 “<a href="http://localhost:8080&quot;" target="_blank" rel="noopener">http://localhost:8080&quot;</a> 访问这个通过Docker容器承载的ASP.NET Core应用。</p><p> <img src="https://ask.qcloudimg.com/http-save/yehe-1161266/slmtqdeeen.png?imageView2/2/w/1620" alt="img"> </p>]]></content>
     
@@ -38,18 +38,18 @@
       <category term="ASP.NET Core 3" scheme="http://www.xwltz.top/categories/ASP-NET-Core-3/"/>
     
     
-      <category term="new" scheme="http://www.xwltz.top/tags/new/"/>
+      <category term=".netcore" scheme="http://www.xwltz.top/tags/netcore/"/>
     
       <category term="Docker" scheme="http://www.xwltz.top/tags/Docker/"/>
     
   </entry>
   
   <entry>
-    <title>.NetCore3.0 DDD驱动设计</title>
-    <link href="http://www.xwltz.top/2019/09/25/NetCore3-0-DDD%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1/"/>
-    <id>http://www.xwltz.top/2019/09/25/NetCore3-0-DDD驱动设计/</id>
+    <title>ASP.NET Core 3 DDD驱动设计</title>
+    <link href="http://www.xwltz.top/2019/09/25/ddd/"/>
+    <id>http://www.xwltz.top/2019/09/25/ddd/</id>
     <published>2019-09-25T03:53:20.000Z</published>
-    <updated>2019-09-25T04:01:12.992Z</updated>
+    <updated>2019-10-24T08:38:20.292Z</updated>
     
     <content type="html"><![CDATA[<h4 id="基础设施层"><a href="#基础设施层" class="headerlink" title="基础设施层"></a>基础设施层</h4><blockquote><p>基础设施层使用的相关知识：Code First ，EF Core，Autofac依赖注入，仓储模式的实现接口，领域服务的实现接口，缓存，以及各种基础工具类</p></blockquote><ol><li>Code First：使用Code First 数据迁移到数据库。<br>常用的数据库迁移命令：<br>Add-Migration 迁移名 —— 添加本次迁移<br>Update-Database——将本次迁移到数据库<br>Add-Migration InitialCreate -IgnoreChanges -—— 创建一次空的数据迁移：已现在版本为起始点</li><li>EF Core ：软删除 ——全局过滤删除的状态，AsNoTracking() ——不持久化到数据库时的查询使用 Any——查询判断使用Any ,Z.EntityFramework.Plus-——批量修改，删除，增删改查，简单封装异步 Anysnc Await 方法</li><li>工具类，例如MD5，AutoMapperHelper，LamdaHelper，RedisHelper简单应用，读取配置文件,统一返回参数等。</li><li>Redis缓存，多种数据类型，查询，插入效率高，Redis与数据库同步策略，先更新数据库在删除缓存，延时双删，（延时，根据数据查询的数据来判断延时的时间），使用StackExchange.Redis</li></ol><h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><blockquote><p>应用层使用的相关知识：AutoMapper，Dto，Autofac依赖注入</p></blockquote><ol><li>Dto：数据传输对象，主要是展现层和应用层传输数据</li><li>AutoMapper：对象之间传输数据，先使用仓储查询出数据，然后通过AutoMapper转换成前端需要的数据返回</li></ol><h4 id="领域层"><a href="#领域层" class="headerlink" title="领域层"></a>领域层</h4><blockquote><p>领域层使用的相关知识：实体，值对象，领域服务接口，仓储接口，聚合，Autofac依赖注入</p></blockquote><ol><li>实体：有唯一的标识（唯一，不可变），包含业务逻辑，以及自身的验证，构造函数实例化，实体的Set应设置为私有的</li><li>值对象：没有唯一的标识，用来描述一个东西的特征，代表是什么</li><li>聚合：聚合根是实体，聚合是对象的组合，由聚合本身维护自身的一致性，封装业务逻辑，聚合尽量小，聚合之间通过唯一标识引用</li><li>仓储：仓储是针对聚合的，封装领域逻辑，明确查询的意图，仓储中只维护聚合的状态，不进行持久化，仓储可以方便单元测试，更换ORM</li><li>领域服务：，领域服务是无状态的，有些业务逻辑不好放在聚合里面的可以使用领域服务，多个聚合根协调，领域服务中可以使用仓储</li><li>Autofac依赖注入：有利于项目层与层之间的解耦，方便单元测试，构造函数注入，依赖倒置，通过约定进行程序集的注入</li></ol><h4 id="展现层"><a href="#展现层" class="headerlink" title="展现层"></a>展现层</h4><ol><li>展现层使用的相关知识：.Net Core WebApi ,MVC,JWT Swagger,日志异常的捕捉，模型的验证，Log4Net，Autofac依赖注入，过滤器</li><li>JWT：JWT包含了使用.分隔的三部分： Header 头部 Payload 负载 Signature 签名，在前端每次请求加上JWT 签发的Token 来替代Session，进行访问页面的验证</li><li>Swagger：可以使用Swagger来请求WebApi ，以及查看WebApi 接口，Swagger可以做接口文档</li><li>Log4Net：日志异常的全局捕捉，记录日志到TXT中</li><li>过滤器：使用过滤器来进行模型的验证 ，Log4Net的日志异常的全局捕捉，以及权限的访问</li></ol>]]></content>
     
@@ -70,69 +70,6 @@
       <category term=".netcore" scheme="http://www.xwltz.top/tags/netcore/"/>
     
       <category term="DDD设计" scheme="http://www.xwltz.top/tags/DDD%E8%AE%BE%E8%AE%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>gitee</title>
-    <link href="http://www.xwltz.top/2019/02/16/gitee/"/>
-    <id>http://www.xwltz.top/2019/02/16/gitee/</id>
-    <published>2019-02-16T07:51:11.000Z</published>
-    <updated>2019-09-24T08:31:01.742Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="xwltzblog"><a href="#xwltzblog" class="headerlink" title="xwltzblog"></a>xwltzblog</h1><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>{<strong>以下是码云平台说明，您可以替换此简介</strong><br>码云是开源中国推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台<br>无论是个人、团队、或是企业，都能够用码云实现代码托管、项目管理、协作开发。企业项目请看 <a href="https://gitee.com/enterprises" target="_blank" rel="noopener">https://gitee.com/enterprises</a>}</p><h4 id="软件架构"><a href="#软件架构" class="headerlink" title="软件架构"></a>软件架构</h4><p>软件架构说明</p><h4 id="安装教程"><a href="#安装教程" class="headerlink" title="安装教程"></a>安装教程</h4><ol><li>xxxx</li><li>xxxx</li><li>xxxx</li></ol><h4 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h4><ol><li>xxxx</li><li>xxxx</li><li>xxxx</li></ol><h4 id="参与贡献"><a href="#参与贡献" class="headerlink" title="参与贡献"></a>参与贡献</h4><ol><li>Fork 本仓库</li><li>新建 Feat_xxx 分支</li><li>提交代码</li><li>新建 Pull Request</li></ol><h4 id="码云特技"><a href="#码云特技" class="headerlink" title="码云特技"></a>码云特技</h4><ol><li>使用 Readme_XXX.md 来支持不同的语言，例如 Readme_en.md, Readme_zh.md</li><li>码云官方博客 <a href="https://blog.gitee.com" target="_blank" rel="noopener">blog.gitee.com</a></li><li>你可以 <a href="https://gitee.com/explore" target="_blank" rel="noopener">https://gitee.com/explore</a> 这个地址来了解码云上的优秀开源项目</li><li><a href="https://gitee.com/gvp" target="_blank" rel="noopener">GVP</a> 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目</li><li>码云官方提供的使用手册 <a href="https://gitee.com/help" target="_blank" rel="noopener">https://gitee.com/help</a></li><li>码云封面人物是一档用来展示码云会员风采的栏目 <a href="https://gitee.com/gitee-stars/" target="_blank" rel="noopener">https://gitee.com/gitee-stars/</a></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;xwltzblog&quot;&gt;&lt;a href=&quot;#xwltzblog&quot; class=&quot;headerlink&quot; title=&quot;xwltzblog&quot;&gt;&lt;/a&gt;xwltzblog&lt;/h1&gt;&lt;h4 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; 
-      
-    
-    </summary>
-    
-    
-      <category term="小试牛刀" scheme="http://www.xwltz.top/categories/%E5%B0%8F%E8%AF%95%E7%89%9B%E5%88%80/"/>
-    
-    
-      <category term="markdown" scheme="http://www.xwltz.top/tags/markdown/"/>
-    
-      <category term="文章" scheme="http://www.xwltz.top/tags/%E6%96%87%E7%AB%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>my new post</title>
-    <link href="http://www.xwltz.top/2019/02/14/my-new-post/"/>
-    <id>http://www.xwltz.top/2019/02/14/my-new-post/</id>
-    <published>2019-02-14T06:35:11.000Z</published>
-    <updated>2019-02-20T06:33:24.582Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="11-08-项目升级说明"><a href="#11-08-项目升级说明" class="headerlink" title="11-08 项目升级说明"></a>11-08 项目升级说明</h4><ol><li>手机拖拽图文列表首行模式可以设置是不是推荐或者热门（单选）</li><li>手机拖拽列表模块排序加上按时间、点击量</li><li>手机拖拽标题栏图标颜色属性（其他组件也是如此）</li><li>手机拖拽搜索框样式调整</li><li>手机拖拽项目独立部署和CMS通过接口进行数据交互</li><li>手机拖拽内置在CMS中将组件模块放在底部，并修改界面显示效果样式</li><li>解决可能存在的跨域问题</li><li>解决网站接口统一访问权限问题</li><li>在CMS系统中，结合手机拖拽功能，实现手机模板文件的生成（已经包含标签文件）</li></ol><a id="more"></a><h4 id="更新记录"><a href="#更新记录" class="headerlink" title="更新记录"></a>更新记录</h4><blockquote><p>2017-11-15</p></blockquote><ol><li>新增 手机拖拽图文列表首行模式可以设置是不是推荐或者热门（单选）</li><li>新增 手机拖拽列表模块排序加上按时间、点击量</li><li>新增 手机拖拽标题栏图标颜色属性（其他组件也是如此）</li><li>新增 页面设置</li><li>调整 特殊组件 特殊处理</li><li>优化组件</li><li>优化css</li><li>优化js</li></ol><blockquote><p>2017-11-09</p></blockquote><ol><li>新增 网站导航可以选择</li></ol><blockquote><p>2017-11-09</p></blockquote><ol><li>删除无用文件和样式，并压缩JS和CSS代码</li><li>优化图标库 资源请求方式改为CDN模式 删除ICONDEFAULT的 减少流量和项目体积</li><li>完全去除iview组件库 替换为Element-UI组件库</li><li>由原本的4.59mb减少至1.35m 缩小体积70%</li></ol><blockquote><p>2017-11-08</p></blockquote><ol><li>优化组件</li><li>优化css</li><li>修复已知BUGS</li></ol><blockquote><p>2017-11-04</p></blockquote><ol><li>增加 <code>评论组件</code> ，<code>留言列表</code></li><li>优化css</li><li>修复已知BUGS</li><li>优化界面</li></ol><blockquote><p>2017-11-03</p></blockquote><ol><li>修改列表模块功能，新增相关列表数据的显示控制</li><li>增加 <code>评论组件</code> ，组件组成部分为：提交功能和列表展示功能</li><li>评论组件只完成属性部分</li><li>修复已知BUGS</li></ol><blockquote><p>2017-11-02</p></blockquote><ol><li>全新界面</li><li>制作网站导航组件</li><li>优化大量css样式</li></ol><blockquote><p>2017-11-01</p></blockquote><ol><li>新增 <code>留言</code> 组件</li><li>全新界面</li><li>优化大量css样式</li></ol><blockquote><p>2017-10-31</p></blockquote><ol><li>修复 组件与组件之间 样式不兼容问题</li></ol><blockquote><p>2017-10-30</p></blockquote><ol><li>替换 <code>颜色选择器</code> 组件</li><li>移除多余组件</li><li>下载列表组件 整合到列表模块中</li><li>优化 代码可读性</li><li>新增 图片轮播 可以修改样式</li></ol><blockquote><p>2017-10-28</p></blockquote><ol><li>新增 <code>客服组件</code></li><li>新增 <code>底部导航</code></li><li>优化 特殊组件的展现方式</li><li>修改已知Bugs</li></ol><blockquote><p>2017-10-27</p></blockquote><ol><li>新增 <code>搜索框组件</code></li><li>新增 <code>固定搜索框组件</code></li><li>新增 <code>下载列表组件</code></li><li>新增 <code>图文列表组件</code>、<code>首行图文列表组件</code>、<code>产品列表</code></li><li>新增 <code>返回顶部组件</code></li><li>修改视频列表、图片列表、文字列表、图文列表、首行图文列表、产品列表融合到一个组件中</li><li>修改已知Bugs</li><li>增加组件的稳定性</li></ol><blockquote><p>2017-10-26</p></blockquote><ol><li>新增 <code>列表模块组件</code></li><li>新增 <code>默认字体图标库</code></li></ol><blockquote><p>2017-10-25</p></blockquote><ol><li>优化组件列表的存储和读取方式（sessionStorage方式）</li><li>优化代码风格</li></ol><blockquote><p>2017-10-24</p></blockquote><ol><li>新增 [ <code>辅助线</code>、<code>辅助空白线</code>、<code>内容展示</code> ] 组件</li><li>更新 <code>标题栏</code> 组件</li><li>修复已经Bugs</li></ol><blockquote><p>2017-10-23</p></blockquote><ol><li>重构项目文件结构</li><li>封装通用代码</li><li>新增组件加载入口</li><li>添加代码注释</li><li>修复已知Bugs</li><li>组件加载方式 改为动态加载 减少代码量</li><li>优化css</li><li>新增 [ <code>图片导航</code>、<code>视频模块</code> ] 组件</li><li>修改 <code>视频</code> 组件新样式</li></ol><blockquote><p>2017-10-20</p></blockquote><ol><li>完成 [ <code>轮播图</code>、<code>字体库</code>、<code>图标导航</code>、<code>页脚</code>、<code>单图组</code>、<code>图片模块</code>、<code>标题</code>、<code>视频</code>、<code>地图</code> ] 组件</li><li>封装常用api （utils.js api.js）</li><li>已完成 保存功能</li><li>已完成 保存预览功能</li><li>修复已知Bugs</li></ol><blockquote><p>2017-10-19</p></blockquote><ol><li>初始化项目</li><li>封装常用api</li><li>整理所属静态文件</li><li>修复已知Bugs</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(&quot;Hello World&quot;)</span><br></pre></td></tr></table></figure><h4 id="组件完成进度"><a href="#组件完成进度" class="headerlink" title="组件完成进度"></a>组件完成进度</h4><table><thead><tr><th align="center">序号</th><th align="left">组件名称</th><th align="center">版本号</th><th align="center">是否完成</th><th align="center">更新日期</th></tr></thead><tbody><tr><td align="center">1</td><td align="left">图片轮播</td><td align="center"><code>v1.0.0</code></td><td align="center">[√]</td><td align="center">2017-10-20</td></tr><tr><td align="center">2</td><td align="left">辅助空白</td><td align="center"><code>v1.0.0</code></td><td align="center">[√]</td><td align="center">2017-10-24</td></tr><tr><td align="center">3</td><td align="left">底部导航</td><td align="center"><code>v1.0.0</code></td><td align="center">[√]</td><td align="center">2017-10-28</td></tr><tr><td align="center">4</td><td align="left">评论</td><td align="center"><code>v1.0.0</code></td><td align="center">[√]</td><td align="center">2017-11-03</td></tr><tr><td align="center">5</td><td align="left">内容展示</td><td align="center"><code>v1.1.0</code></td><td align="center">[√]</td><td align="center">2017-10-26</td></tr><tr><td align="center">6</td><td align="left">留言</td><td align="center"><code>v1.0.0</code></td><td align="center">[√]</td><td align="center">2017-11-01</td></tr><tr><td align="center">7</td><td align="left">留言列表</td><td align="center"><code>v1.0.0</code></td><td align="center">[√]</td><td align="center">2017-11-04</td></tr><tr><td align="center">8</td><td align="left">图标导航</td><td align="center"><code>v1.1.0</code></td><td align="center">[√]</td><td align="center">2017-10-24</td></tr><tr><td align="center">9</td><td align="left">图片导航</td><td align="center"><code>v1.0.0</code></td><td align="center">[√]</td><td align="center">2017-10-23</td></tr><tr><td align="center">10</td><td align="left">客服</td><td align="center"><code>v1.1.0</code></td><td align="center">[√]</td><td align="center">2017-10-28</td></tr><tr><td align="center">11</td><td align="left">辅助线</td><td align="center"><code>v1.0.0</code></td><td align="center">[√]</td><td align="center">2017-10-24</td></tr><tr><td align="center">12</td><td align="left">列表模块</td><td align="center"><code>v1.2.0</code></td><td align="center">[√]</td><td align="center">2017-10-30</td></tr><tr><td align="center">13</td><td align="left">地图</td><td align="center"><code>v1.0.0</code></td><td align="center">[√]</td><td align="center">2017-10-20</td></tr><tr><td align="center">14</td><td align="left">网站导航</td><td align="center"><code>v1.0.0</code></td><td align="center">[√]</td><td align="center">2017-11-02</td></tr><tr><td align="center">15</td><td align="left">页脚</td><td align="center"><code>v1.1.0</code></td><td align="center">[√]</td><td align="center">2017-10-26</td></tr><tr><td align="center">16</td><td align="left">图片</td><td align="center"><code>v1.0.0</code></td><td align="center">[√]</td><td align="center">2017-10-20</td></tr><tr><td align="center">17</td><td align="left">搜索框</td><td align="center"><code>v1.0.0</code></td><td align="center">[√]</td><td align="center">2017-10-27</td></tr><tr><td align="center">18</td><td align="left">固定搜索框</td><td align="center"><code>v1.0.0</code></td><td align="center">[√]</td><td align="center">2017-10-27</td></tr><tr><td align="center">19</td><td align="left">标题栏</td><td align="center"><code>v1.1.0</code></td><td align="center">[√]</td><td align="center">2017-10-24</td></tr><tr><td align="center">20</td><td align="left">返回顶部</td><td align="center"><code>v1.1.0</code></td><td align="center">[√]</td><td align="center">2017-10-28</td></tr><tr><td align="center">21</td><td align="left">视频</td><td align="center"><code>v1.0.0</code></td><td align="center">[√]</td><td align="center">2017-10-20</td></tr><tr><td align="center">21</td><td align="left">字体库</td><td align="center"><code>v1.2.0</code></td><td align="center">[√]</td><td align="center">2017-10-26</td></tr></tbody></table>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;11-08-项目升级说明&quot;&gt;&lt;a href=&quot;#11-08-项目升级说明&quot; class=&quot;headerlink&quot; title=&quot;11-08 项目升级说明&quot;&gt;&lt;/a&gt;11-08 项目升级说明&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;手机拖拽图文列表首行模式可以设置是不是推荐或者热门（单选）&lt;/li&gt;
-&lt;li&gt;手机拖拽列表模块排序加上按时间、点击量&lt;/li&gt;
-&lt;li&gt;手机拖拽标题栏图标颜色属性（其他组件也是如此）&lt;/li&gt;
-&lt;li&gt;手机拖拽搜索框样式调整&lt;/li&gt;
-&lt;li&gt;手机拖拽项目独立部署和CMS通过接口进行数据交互&lt;/li&gt;
-&lt;li&gt;手机拖拽内置在CMS中将组件模块放在底部，并修改界面显示效果样式&lt;/li&gt;
-&lt;li&gt;解决可能存在的跨域问题&lt;/li&gt;
-&lt;li&gt;解决网站接口统一访问权限问题&lt;/li&gt;
-&lt;li&gt;在CMS系统中，结合手机拖拽功能，实现手机模板文件的生成（已经包含标签文件）&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-    
-      <category term="小试牛刀" scheme="http://www.xwltz.top/categories/%E5%B0%8F%E8%AF%95%E7%89%9B%E5%88%80/"/>
-    
-    
-      <category term="new" scheme="http://www.xwltz.top/tags/new/"/>
-    
-      <category term="文章" scheme="http://www.xwltz.top/tags/%E6%96%87%E7%AB%A0/"/>
     
   </entry>
   
