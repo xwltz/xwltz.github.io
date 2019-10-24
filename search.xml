@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ASP.NET Core 3 Docker]]></title>
+    <url>%2F2019%2F10%2F24%2Fdocker%2F</url>
+    <content type="text"><![CDATA[对于一个 .NET Core开发人员，你可能没有使用过Docker，但是你不可能没有听说过Docker。Docker是Github上最受欢迎的开源项目之一，它号称要成为所有云应用的基石，并把互联网升级到下一代。Docker是dotCloud公司开源的一款产品，从其诞生那一刻算起，在短短两三年时间里就成为了开源社区最火爆的项目。对于完全拥抱开源的.NET Core来说，它自然应该对Docker提供完美的支持。对于接下来的内容，我们假设你已经对Docker有了基本的了解，并且在你的机器上已经安装了Docker。 一、创建一个ASP.NET Core应用我们将演示如何创建一个ASP.NET Core程序并将其编译成Docker镜像，并Docker环境针对该镜像创建一个容器来启动一个应用实例。简单起见，我们还是直接采用脚手架命令行的形式来创建这个ASP.NET Core应用。如下图1所示，我们执行dotnet new web命令在”d:\projects\helloworld”目录下创建一个空的ASP.NET Core应用。 二、定义Dokerfile我们现在需要将这个ASP.NET Core应用制作成一个Docker镜像，为此我们需要在项目根目录下创建一个Dockerfile文件（文件名就是Dokerfile，没有扩展名），并在该文件中定义如下的内容。如果我们对Dockerfile具有基本的了解，对于这个文件的内容应该不难理解。 123456789101112131415161718192021222324252627# 1. 指定编译和发布应用的镜像FROM mcr.microsoft.com/dotnet/core/sdk:3.0 AS build# 2. 指定（编译和发布）工作目录WORKDIR /app# 3. 拷贝.csproj到工作目录/app，然后执行dotnet restore恢复所有安装的NuGet包COPY *.csproj ./RUN dotnet restore# 4. 拷贝所有文件到工作目录(/app)，然后执行dotnet publish命令将应用发布到/app/out目录下COPY . ./RUN dotnet publish -c Release -o out# 5. 编译生成Docker镜像# 5.1.设置基础镜像FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS runtime# 5.2. 设置（运行）工作目录，并将发布文件拷贝到out子目录下WORKDIR /appCOPY --from= build /app/out .# 5.3. 利用环境变量设置ASP.NET Core应用的监听地址ENV ASPNETCORE_URLS http://0.0.0.0:3721# 5.4. 执行dotnet命令启动ASP.NET Core应用ENTRYPOINT [&quot;dotnet&quot;, &quot;helloworld.dll&quot;] 这个Dockerfile采用了一个中间层（build）来暂存ASP.NET Core MVC应用发布后的资源，其工作目录为”/app”。具体来说，这个层采用”microsoft/aspnetcore-build:2”作为基础镜像，我们先将定义项目的.csproj文件（helloworld.csproj）拷贝到当前工作目录，然后运行”dotnet restore”命令恢复所有注册在这个项目文件中的NuGet包。接下来我们将当前项目的所有文件拷贝到当前工作目录，并执行dotnet publish对整个项目进行编译发布（针对Release模式），发布后的资源被保存到目录”/app/out”中。 在真正将编译生成Docker镜像的时候，我们采用”mcr.microsoft.com/dotnet/core/aspnet:3.0”作为基础镜像，由于应用在上面进行了预先发布，所以我们只需要将发布后的所有文件拷贝到当前工作目录就可以了。接下来我们通过环境变量设置了ASP.NET Core应用的监听地址 “http://0.0.0.0:3721&quot; 。 针对ENTRYPOINT的定义（ENTRYPOINT [“dotnet”, “helloworld.dll”]），我们知道当容器被启动的时候，”dotnet helloworld.dll”命令会被执行以启动这个ASP.NET Core应用。 三、生成镜像Dockerfile文件定义好之后，我们打开CMD命令行并切换到项目所在根目录（也就是Dockerfile文件所在的目录），然后执行”docker build -t helloworldapp .”命令，该命令会利用这个Dockerfile文件生成一个命名为helloworldapp”的Docker镜像。 四、启动容器既然Docker镜像已经被成功创建出来了，那么余下的工作就很简单了，我们只需要针对这个镜像创建对应的容器，最终的ASP.NET Core应用的启动就可以直接通过启动该容器来完成。如下图所示，我们执行”docker run -d -p 8080:3721 –name myapp helloworldapp”命令针对前面生成的Docker镜像（helloworldapp）创建并启动了一个命名为myapp（–name myapp）的容器。由于我们从外面访问这个应用，所以我们通过端口映射（-p 8080:3721）将内部监听端口3721映射为当前宿主机器的端口8080，所以我们利用地址 “http://localhost:8080&quot; 访问这个通过Docker容器承载的ASP.NET Core应用。]]></content>
+      <categories>
+        <category>ASP.NET Core 3</category>
+      </categories>
+      <tags>
+        <tag>new</tag>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[.NetCore3.0 DDD驱动设计]]></title>
     <url>%2F2019%2F09%2F25%2FNetCore3-0-DDD%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%2F</url>
     <content type="text"><![CDATA[基础设施层 基础设施层使用的相关知识：Code First ，EF Core，Autofac依赖注入，仓储模式的实现接口，领域服务的实现接口，缓存，以及各种基础工具类 Code First：使用Code First 数据迁移到数据库。常用的数据库迁移命令：Add-Migration 迁移名 —— 添加本次迁移Update-Database——将本次迁移到数据库Add-Migration InitialCreate -IgnoreChanges -—— 创建一次空的数据迁移：已现在版本为起始点 EF Core ：软删除 ——全局过滤删除的状态，AsNoTracking() ——不持久化到数据库时的查询使用 Any——查询判断使用Any ,Z.EntityFramework.Plus-——批量修改，删除，增删改查，简单封装异步 Anysnc Await 方法 工具类，例如MD5，AutoMapperHelper，LamdaHelper，RedisHelper简单应用，读取配置文件,统一返回参数等。 Redis缓存，多种数据类型，查询，插入效率高，Redis与数据库同步策略，先更新数据库在删除缓存，延时双删，（延时，根据数据查询的数据来判断延时的时间），使用StackExchange.Redis 应用层 应用层使用的相关知识：AutoMapper，Dto，Autofac依赖注入 Dto：数据传输对象，主要是展现层和应用层传输数据 AutoMapper：对象之间传输数据，先使用仓储查询出数据，然后通过AutoMapper转换成前端需要的数据返回 领域层 领域层使用的相关知识：实体，值对象，领域服务接口，仓储接口，聚合，Autofac依赖注入 实体：有唯一的标识（唯一，不可变），包含业务逻辑，以及自身的验证，构造函数实例化，实体的Set应设置为私有的 值对象：没有唯一的标识，用来描述一个东西的特征，代表是什么 聚合：聚合根是实体，聚合是对象的组合，由聚合本身维护自身的一致性，封装业务逻辑，聚合尽量小，聚合之间通过唯一标识引用 仓储：仓储是针对聚合的，封装领域逻辑，明确查询的意图，仓储中只维护聚合的状态，不进行持久化，仓储可以方便单元测试，更换ORM 领域服务：，领域服务是无状态的，有些业务逻辑不好放在聚合里面的可以使用领域服务，多个聚合根协调，领域服务中可以使用仓储 Autofac依赖注入：有利于项目层与层之间的解耦，方便单元测试，构造函数注入，依赖倒置，通过约定进行程序集的注入 展现层 展现层使用的相关知识：.Net Core WebApi ,MVC,JWT Swagger,日志异常的捕捉，模型的验证，Log4Net，Autofac依赖注入，过滤器 JWT：JWT包含了使用.分隔的三部分： Header 头部 Payload 负载 Signature 签名，在前端每次请求加上JWT 签发的Token 来替代Session，进行访问页面的验证 Swagger：可以使用Swagger来请求WebApi ，以及查看WebApi 接口，Swagger可以做接口文档 Log4Net：日志异常的全局捕捉，记录日志到TXT中 过滤器：使用过滤器来进行模型的验证 ，Log4Net的日志异常的全局捕捉，以及权限的访问]]></content>
@@ -20,8 +32,8 @@
         <category>小试牛刀</category>
       </categories>
       <tags>
-        <tag>文章</tag>
         <tag>markdown</tag>
+        <tag>文章</tag>
       </tags>
   </entry>
   <entry>

@@ -56,33 +56,38 @@
     sidebarPadding: 40
   };
 </script>
-  <meta name="description" content="一枚煎熬6年.net, java, nodejs开发经验的全栈开发攻城狮兼系统架构狮兼项目经理兼产品汪。">
-<meta name="keywords" content="个人,xwltz,网站,博客,技术,分享">
-<meta property="og:type" content="website">
-<meta property="og:title" content="xwltzの技术小站">
-<meta property="og:url" content="http://www.xwltz.top/index.html">
+  <meta name="description" content="对于一个 .NET Core开发人员，你可能没有使用过Docker，但是你不可能没有听说过Docker。Docker是Github上最受欢迎的开源项目之一，它号称要成为所有云应用的基石，并把互联网升级到下一代。Docker是dotCloud公司开源的一款产品，从其诞生那一刻算起，在短短两三年时间里就成为了开源社区最火爆的项目。对于完全拥抱开源的.NET Core来说，它自然应该对Docker提供完">
+<meta name="keywords" content="new,Docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ASP.NET Core 3 Docker">
+<meta property="og:url" content="http://www.xwltz.top/2019/10/24/docker/index.html">
 <meta property="og:site_name" content="xwltzの技术小站">
-<meta property="og:description" content="一枚煎熬6年.net, java, nodejs开发经验的全栈开发攻城狮兼系统架构狮兼项目经理兼产品汪。">
+<meta property="og:description" content="对于一个 .NET Core开发人员，你可能没有使用过Docker，但是你不可能没有听说过Docker。Docker是Github上最受欢迎的开源项目之一，它号称要成为所有云应用的基石，并把互联网升级到下一代。Docker是dotCloud公司开源的一款产品，从其诞生那一刻算起，在短短两三年时间里就成为了开源社区最火爆的项目。对于完全拥抱开源的.NET Core来说，它自然应该对Docker提供完">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ask.qcloudimg.com/http-save/yehe-1161266/q716abhgtb.png?imageView2/2/w/1620">
+<meta property="og:image" content="https://ask.qcloudimg.com/http-save/yehe-1161266/jr931k59gi.png?imageView2/2/w/1620">
+<meta property="og:image" content="https://ask.qcloudimg.com/http-save/yehe-1161266/slmtqdeeen.png?imageView2/2/w/1620">
+<meta property="og:updated_time" content="2019-10-24T08:31:22.304Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xwltzの技术小站">
-<meta name="twitter:description" content="一枚煎熬6年.net, java, nodejs开发经验的全栈开发攻城狮兼系统架构狮兼项目经理兼产品汪。">
+<meta name="twitter:title" content="ASP.NET Core 3 Docker">
+<meta name="twitter:description" content="对于一个 .NET Core开发人员，你可能没有使用过Docker，但是你不可能没有听说过Docker。Docker是Github上最受欢迎的开源项目之一，它号称要成为所有云应用的基石，并把互联网升级到下一代。Docker是dotCloud公司开源的一款产品，从其诞生那一刻算起，在短短两三年时间里就成为了开源社区最火爆的项目。对于完全拥抱开源的.NET Core来说，它自然应该对Docker提供完">
+<meta name="twitter:image" content="https://ask.qcloudimg.com/http-save/yehe-1161266/q716abhgtb.png?imageView2/2/w/1620">
   <link rel="alternate" href="/atom.xml" title="xwltzの技术小站" type="application/atom+xml">
-  <link rel="canonical" href="http://www.xwltz.top/">
+  <link rel="canonical" href="http://www.xwltz.top/2019/10/24/docker/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
+    isHome: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>xwltzの技术小站</title>
+  <title>ASP.NET Core 3 Docker | xwltzの技术小站</title>
   <meta name="generator" content="Hexo 3.9.0">
   
 
@@ -276,12 +281,13 @@
 
           <div id="content" class="content">
             
+
   <div id="posts" class="posts-expand">
-        <article itemscope itemtype="http://schema.org/Article">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block home">
+  <div class="post-block post">
     <link itemprop="mainEntityOfPage" href="http://www.xwltz.top/2019/10/24/docker/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -294,9 +300,8 @@
       <meta itemprop="name" content="xwltzの技术小站">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/10/24/docker/" class="post-title-link" itemprop="url">ASP.NET Core 3 Docker</a>
+        <h1 class="post-title" itemprop="name headline">ASP.NET Core 3 Docker
+
           
         </h1>
 
@@ -386,7 +391,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>对于一个 .NET Core开发人员，你可能没有使用过Docker，但是你不可能没有听说过Docker。Docker是Github上最受欢迎的开源项目之一，它号称要成为所有云应用的基石，并把互联网升级到下一代。Docker是dotCloud公司开源的一款产品，从其诞生那一刻算起，在短短两三年时间里就成为了开源社区最火爆的项目。对于完全拥抱开源的.NET Core来说，它自然应该对Docker提供完美的支持。对于接下来的内容，我们假设你已经对Docker有了基本的了解，并且在你的机器上已经安装了Docker。</p>
+        <p>对于一个 .NET Core开发人员，你可能没有使用过Docker，但是你不可能没有听说过Docker。Docker是Github上最受欢迎的开源项目之一，它号称要成为所有云应用的基石，并把互联网升级到下一代。Docker是dotCloud公司开源的一款产品，从其诞生那一刻算起，在短短两三年时间里就成为了开源社区最火爆的项目。对于完全拥抱开源的.NET Core来说，它自然应该对Docker提供完美的支持。对于接下来的内容，我们假设你已经对Docker有了基本的了解，并且在你的机器上已经安装了Docker。</p>
 <h3 id="一、创建一个ASP-NET-Core应用"><a href="#一、创建一个ASP-NET-Core应用" class="headerlink" title="一、创建一个ASP.NET Core应用"></a>一、创建一个ASP.NET Core应用</h3><p>我们将演示如何创建一个ASP.NET Core程序并将其编译成Docker镜像，并Docker环境针对该镜像创建一个容器来启动一个应用实例。简单起见，我们还是直接采用脚手架命令行的形式来创建这个ASP.NET Core应用。如下图1所示，我们执行dotnet new web命令在”d:\projects\helloworld”目录下创建一个空的ASP.NET Core应用。</p>
 <p> <img src="https://ask.qcloudimg.com/http-save/yehe-1161266/q716abhgtb.png?imageView2/2/w/1620" alt="img"> </p>
 <h3 id="二、定义Dokerfile"><a href="#二、定义Dokerfile" class="headerlink" title="二、定义Dokerfile"></a>二、定义Dokerfile</h3><p>我们现在需要将这个ASP.NET Core应用制作成一个Docker镜像，为此我们需要在项目根目录下创建一个Dockerfile文件（文件名就是Dokerfile，没有扩展名），并在该文件中定义如下的内容。如果我们对Dockerfile具有基本的了解，对于这个文件的内容应该不难理解。</p>
@@ -399,510 +404,133 @@
 <h3 id="四、启动容器"><a href="#四、启动容器" class="headerlink" title="四、启动容器"></a>四、启动容器</h3><p>既然Docker镜像已经被成功创建出来了，那么余下的工作就很简单了，我们只需要针对这个镜像创建对应的容器，最终的ASP.NET Core应用的启动就可以直接通过启动该容器来完成。如下图所示，我们执行”docker run -d -p 8080:3721 –name myapp helloworldapp”命令针对前面生成的Docker镜像（helloworldapp）创建并启动了一个命名为myapp（–name myapp）的容器。由于我们从外面访问这个应用，所以我们通过端口映射（-p 8080:3721）将内部监听端口3721映射为当前宿主机器的端口8080，所以我们利用地址 “<a href="http://localhost:8080&quot;" target="_blank" rel="noopener">http://localhost:8080&quot;</a> 访问这个通过Docker容器承载的ASP.NET Core应用。</p>
 <p> <img src="https://ask.qcloudimg.com/http-save/yehe-1161266/slmtqdeeen.png?imageView2/2/w/1620" alt="img"> </p>
 
-        
-      
     </div>
 
     
     
     
-      <footer class="post-footer">
-          <div class="post-eof"></div>
+
+      
+        <style>
+    .passage_end::after{
+        content: "- The End -";
+        text-align:center;
+        color: #252525;
+        display: block;
+        font-size:26px;
+        font-weight:bold;
+        font-family: Vladimir Script;
+    }
+</style>
+<div class="passage_end" style="margin-top:25px;text-align:center;color:#333;font-size:16px;">感谢您的阅读</div>
+      
         
-      </footer>
+      
+        <div id="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="xwltz 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="xwltz 支付宝">
+        <p>支付宝</p>
+      </div>
+
   </div>
-  
-  
-  
-  </article>
+</div>
 
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://www.xwltz.top/2019/09/25/NetCore3-0-DDD驱动设计/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xwltz">
-      <meta itemprop="description" content="一枚煎熬6年.net, java, nodejs开发经验的全栈开发攻城狮兼系统架构狮兼项目经理兼产品汪。">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xwltzの技术小站">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/25/NetCore3-0-DDD驱动设计/" class="post-title-link" itemprop="url">.NetCore3.0 DDD驱动设计</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-25 11:53:20 / 修改时间：12:01:12" itemprop="dateCreated datePublished" datetime="2019-09-25T11:53:20+08:00">2019-09-25</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ASP-NET-CORE/" itemprop="url" rel="index"><span itemprop="name">ASP.NET CORE</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            <span id="/2019/09/25/NetCore3-0-DDD驱动设计/" class="post-meta-item leancloud_visitors" data-flag-title=".NetCore3.0 DDD驱动设计" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
+      
         
-      
-      <span class="post-meta-item-text">评论数：</span>
-    
-    <a title="valine" href="/2019/09/25/NetCore3-0-DDD驱动设计/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/09/25/NetCore3-0-DDD驱动设计/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">本文字数：</span>
-              
-              <span>1.3k</span>
-            </span>
-          
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              
-              <span>1 分钟</span>
-            </span>
-          
 
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+<div>
+  <ul class="post-copyright">
+    <li class="post-copyright-title">
+      <strong>本文标题： </strong>
+      ASP.NET Core 3 Docker
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      xwltz
+      <span class="with-love" id="animate"><i class="fa fa-heart"></i></span>
+    </li>
+    <li class="post-copyright-release-time">
+      <strong>发布时间： </strong>
+      2019年10月24日 - 16:10:00
+    </li>
+    <li class="post-copyright-update-time">
+      <strong>最后更新： </strong>
+     2019年10月24日 - 16:10:30
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.xwltz.top/2019/10/24/docker/" title="ASP.NET Core 3 Docker">http://www.xwltz.top/2019/10/24/docker/</a> &nbsp;
+      <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.xwltz.top/2019/10/24/docker/" aria-label="复制成功！"></i></span>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
 
       
-          <h4 id="基础设施层"><a href="#基础设施层" class="headerlink" title="基础设施层"></a>基础设施层</h4><blockquote>
-<p>基础设施层使用的相关知识：Code First ，EF Core，Autofac依赖注入，仓储模式的实现接口，领域服务的实现接口，缓存，以及各种基础工具类</p>
-</blockquote>
-<ol>
-<li>Code First：使用Code First 数据迁移到数据库。<br>常用的数据库迁移命令：<br>Add-Migration 迁移名 —— 添加本次迁移<br>Update-Database——将本次迁移到数据库<br>Add-Migration InitialCreate -IgnoreChanges -—— 创建一次空的数据迁移：已现在版本为起始点</li>
-<li>EF Core ：软删除 ——全局过滤删除的状态，AsNoTracking() ——不持久化到数据库时的查询使用 Any——查询判断使用Any ,Z.EntityFramework.Plus-——批量修改，删除，增删改查，简单封装异步 Anysnc Await 方法</li>
-<li>工具类，例如MD5，AutoMapperHelper，LamdaHelper，RedisHelper简单应用，读取配置文件,统一返回参数等。</li>
-<li>Redis缓存，多种数据类型，查询，插入效率高，Redis与数据库同步策略，先更新数据库在删除缓存，延时双删，（延时，根据数据查询的数据来判断延时的时间），使用StackExchange.Redis</li>
-</ol>
-<h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><blockquote>
-<p>应用层使用的相关知识：AutoMapper，Dto，Autofac依赖注入</p>
-</blockquote>
-<ol>
-<li>Dto：数据传输对象，主要是展现层和应用层传输数据</li>
-<li>AutoMapper：对象之间传输数据，先使用仓储查询出数据，然后通过AutoMapper转换成前端需要的数据返回</li>
-</ol>
-<h4 id="领域层"><a href="#领域层" class="headerlink" title="领域层"></a>领域层</h4><blockquote>
-<p>领域层使用的相关知识：实体，值对象，领域服务接口，仓储接口，聚合，Autofac依赖注入</p>
-</blockquote>
-<ol>
-<li>实体：有唯一的标识（唯一，不可变），包含业务逻辑，以及自身的验证，构造函数实例化，实体的Set应设置为私有的</li>
-<li>值对象：没有唯一的标识，用来描述一个东西的特征，代表是什么</li>
-<li>聚合：聚合根是实体，聚合是对象的组合，由聚合本身维护自身的一致性，封装业务逻辑，聚合尽量小，聚合之间通过唯一标识引用</li>
-<li>仓储：仓储是针对聚合的，封装领域逻辑，明确查询的意图，仓储中只维护聚合的状态，不进行持久化，仓储可以方便单元测试，更换ORM</li>
-<li>领域服务：，领域服务是无状态的，有些业务逻辑不好放在聚合里面的可以使用领域服务，多个聚合根协调，领域服务中可以使用仓储</li>
-<li>Autofac依赖注入：有利于项目层与层之间的解耦，方便单元测试，构造函数注入，依赖倒置，通过约定进行程序集的注入</li>
-</ol>
-<h4 id="展现层"><a href="#展现层" class="headerlink" title="展现层"></a>展现层</h4><ol>
-<li>展现层使用的相关知识：.Net Core WebApi ,MVC,JWT Swagger,日志异常的捕捉，模型的验证，Log4Net，Autofac依赖注入，过滤器</li>
-<li>JWT：JWT包含了使用.分隔的三部分： Header 头部 Payload 负载 Signature 签名，在前端每次请求加上JWT 签发的Token 来替代Session，进行访问页面的验证</li>
-<li>Swagger：可以使用Swagger来请求WebApi ，以及查看WebApi 接口，Swagger可以做接口文档</li>
-<li>Log4Net：日志异常的全局捕捉，记录日志到TXT中</li>
-<li>过滤器：使用过滤器来进行模型的验证 ，Log4Net的日志异常的全局捕捉，以及权限的访问</li>
-</ol>
 
-        
-      
-    </div>
-
-    
-    
-    
       <footer class="post-footer">
-          <div class="post-eof"></div>
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/new/" rel="tag"># new</a>
+            
+              <a href="/tags/Docker/" rel="tag"># Docker</a>
+            
+          </div>
         
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://www.xwltz.top/2019/02/16/gitee/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xwltz">
-      <meta itemprop="description" content="一枚煎熬6年.net, java, nodejs开发经验的全栈开发攻城狮兼系统架构狮兼项目经理兼产品汪。">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xwltzの技术小站">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/02/16/gitee/" class="post-title-link" itemprop="url">gitee</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-02-16 15:51:11" itemprop="dateCreated datePublished" datetime="2019-02-16T15:51:11+08:00">2019-02-16</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-24 16:31:01" itemprop="dateModified" datetime="2019-09-24T16:31:01+08:00">2019-09-24</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/小试牛刀/" itemprop="url" rel="index"><span itemprop="name">小试牛刀</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            <span id="/2019/02/16/gitee/" class="post-meta-item leancloud_visitors" data-flag-title="gitee" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">评论数：</span>
-    
-    <a title="valine" href="/2019/02/16/gitee/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/02/16/gitee/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">本文字数：</span>
-              
-              <span>499</span>
-            </span>
-          
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              
-              <span>1 分钟</span>
-            </span>
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="xwltzblog"><a href="#xwltzblog" class="headerlink" title="xwltzblog"></a>xwltzblog</h1><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>{<strong>以下是码云平台说明，您可以替换此简介</strong><br>码云是开源中国推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台<br>无论是个人、团队、或是企业，都能够用码云实现代码托管、项目管理、协作开发。企业项目请看 <a href="https://gitee.com/enterprises" target="_blank" rel="noopener">https://gitee.com/enterprises</a>}</p>
-<h4 id="软件架构"><a href="#软件架构" class="headerlink" title="软件架构"></a>软件架构</h4><p>软件架构说明</p>
-<h4 id="安装教程"><a href="#安装教程" class="headerlink" title="安装教程"></a>安装教程</h4><ol>
-<li>xxxx</li>
-<li>xxxx</li>
-<li>xxxx</li>
-</ol>
-<h4 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h4><ol>
-<li>xxxx</li>
-<li>xxxx</li>
-<li>xxxx</li>
-</ol>
-<h4 id="参与贡献"><a href="#参与贡献" class="headerlink" title="参与贡献"></a>参与贡献</h4><ol>
-<li>Fork 本仓库</li>
-<li>新建 Feat_xxx 分支</li>
-<li>提交代码</li>
-<li>新建 Pull Request</li>
-</ol>
-<h4 id="码云特技"><a href="#码云特技" class="headerlink" title="码云特技"></a>码云特技</h4><ol>
-<li>使用 Readme_XXX.md 来支持不同的语言，例如 Readme_en.md, Readme_zh.md</li>
-<li>码云官方博客 <a href="https://blog.gitee.com" target="_blank" rel="noopener">blog.gitee.com</a></li>
-<li>你可以 <a href="https://gitee.com/explore" target="_blank" rel="noopener">https://gitee.com/explore</a> 这个地址来了解码云上的优秀开源项目</li>
-<li><a href="https://gitee.com/gvp" target="_blank" rel="noopener">GVP</a> 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目</li>
-<li>码云官方提供的使用手册 <a href="https://gitee.com/help" target="_blank" rel="noopener">https://gitee.com/help</a></li>
-<li>码云封面人物是一档用来展示码云会员风采的栏目 <a href="https://gitee.com/gitee-stars/" target="_blank" rel="noopener">https://gitee.com/gitee-stars/</a></li>
-</ol>
 
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://www.xwltz.top/2019/02/14/my-new-post/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xwltz">
-      <meta itemprop="description" content="一枚煎熬6年.net, java, nodejs开发经验的全栈开发攻城狮兼系统架构狮兼项目经理兼产品汪。">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xwltzの技术小站">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/02/14/my-new-post/" class="post-title-link" itemprop="url">my new post</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
               
-                
+                <a href="/2019/09/25/NetCore3-0-DDD驱动设计/" rel="next" title=".NetCore3.0 DDD驱动设计">
+                  <i class="fa fa-chevron-left"></i> .NetCore3.0 DDD驱动设计
+                </a>
               
-
-              <time title="创建时间：2019-02-14 14:35:11" itemprop="dateCreated datePublished" datetime="2019-02-14T14:35:11+08:00">2019-02-14</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-02-20 14:33:24" itemprop="dateModified" datetime="2019-02-20T14:33:24+08:00">2019-02-20</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/小试牛刀/" itemprop="url" rel="index"><span itemprop="name">小试牛刀</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            <span id="/2019/02/14/my-new-post/" class="post-meta-item leancloud_visitors" data-flag-title="my new post" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">评论数：</span>
-    
-    <a title="valine" href="/2019/02/14/my-new-post/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/02/14/my-new-post/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">本文字数：</span>
-              
-              <span>1.9k</span>
-            </span>
-          
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              
-              <span>2 分钟</span>
-            </span>
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="11-08-项目升级说明"><a href="#11-08-项目升级说明" class="headerlink" title="11-08 项目升级说明"></a>11-08 项目升级说明</h4><ol>
-<li>手机拖拽图文列表首行模式可以设置是不是推荐或者热门（单选）</li>
-<li>手机拖拽列表模块排序加上按时间、点击量</li>
-<li>手机拖拽标题栏图标颜色属性（其他组件也是如此）</li>
-<li>手机拖拽搜索框样式调整</li>
-<li>手机拖拽项目独立部署和CMS通过接口进行数据交互</li>
-<li>手机拖拽内置在CMS中将组件模块放在底部，并修改界面显示效果样式</li>
-<li>解决可能存在的跨域问题</li>
-<li>解决网站接口统一访问权限问题</li>
-<li>在CMS系统中，结合手机拖拽功能，实现手机模板文件的生成（已经包含标签文件）</li>
-</ol>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/02/14/my-new-post/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
             </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
         
       </footer>
+    
   </div>
   
   
   
   </article>
 
-    
   </div>
-
-  
 
 
           </div>
           
+    
+    <div class="comments" id="comments"></div>
+  
 
         </div>
           
@@ -917,6 +545,11 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -929,6 +562,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、创建一个ASP-NET-Core应用"><span class="nav-number">1.</span> <span class="nav-text">一、创建一个ASP.NET Core应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、定义Dokerfile"><span class="nav-number">2.</span> <span class="nav-text">二、定义Dokerfile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、生成镜像"><span class="nav-number">3.</span> <span class="nav-text">三、生成镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、启动容器"><span class="nav-number">4.</span> <span class="nav-text">四、启动容器</span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
