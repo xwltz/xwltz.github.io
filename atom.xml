@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.xwltz.top/"/>
-  <updated>2019-10-26T03:44:00.068Z</updated>
+  <updated>2019-11-06T02:07:10.784Z</updated>
   <id>http://www.xwltz.top/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>chrome 取消隐藏https和www</title>
+    <link href="http://www.xwltz.top/2019/11/06/chrome/"/>
+    <id>http://www.xwltz.top/2019/11/06/chrome/</id>
+    <published>2019-11-06T02:04:35.000Z</published>
+    <updated>2019-11-06T02:07:10.784Z</updated>
+    
+    <content type="html"><![CDATA[<p>经测试，可以在 chrome://flags F12控制台执行</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">&apos;omnibox-ui-hide-steady-state-url-path-query-and-ref&apos;,</span><br><span class="line">&apos;omnibox-ui-hide-steady-state-url-scheme&apos;,</span><br><span class="line">&apos;omnibox-ui-hide-steady-state-url-trivial-subdomains&apos;</span><br><span class="line">].forEach(function(f) &#123;</span><br><span class="line">    chrome.send(&apos;enableExperimentalFeature&apos;, [f + &apos;@2&apos;, &apos;true&apos;]);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>来禁用这几个选项。代码中 <code>@2</code> 对应的是 Disabled。<code>@0</code> 和 <code>@1</code> 分别对应 Default 和 Enabled。<br>完成后重启chrome<br>chrome版本号：79.0.3941.4（正式版本）（32 位）</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;经测试，可以在 chrome://flags F12控制台执行&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;sp
+      
+    
+    </summary>
+    
+    
+      <category term="web" scheme="http://www.xwltz.top/categories/web/"/>
+    
+    
+      <category term="chrome" scheme="http://www.xwltz.top/tags/chrome/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>markdown</title>
+    <link href="http://www.xwltz.top/2019/10/26/markdown/"/>
+    <id>http://www.xwltz.top/2019/10/26/markdown/</id>
+    <published>2019-10-26T03:49:38.000Z</published>
+    <updated>2019-10-26T03:49:38.183Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>pm2 + nodejs</title>
