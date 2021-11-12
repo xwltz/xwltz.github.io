@@ -16,6 +16,27 @@
       </tags>
   </entry>
   <entry>
+    <title>ASP.NET Core 3 Docker</title>
+    <url>/2019/10/24/docker/</url>
+    <content><![CDATA[<p>对于一个 .NET Core开发人员，你可能没有使用过Docker，但是你不可能没有听说过Docker。Docker是Github上最受欢迎的开源项目之一，它号称要成为所有云应用的基石，并把互联网升级到下一代。Docker是dotCloud公司开源的一款产品，从其诞生那一刻算起，在短短两三年时间里就成为了开源社区最火爆的项目。对于完全拥抱开源的.NET Core来说，它自然应该对Docker提供完美的支持。对于接下来的内容，我们假设你已经对Docker有了基本的了解，并且在你的机器上已经安装了Docker。</p>
+<h3 id="一、创建一个ASP-NET-Core应用"><a href="#一、创建一个ASP-NET-Core应用" class="headerlink" title="一、创建一个ASP.NET Core应用"></a>一、创建一个ASP.NET Core应用</h3><p>我们将演示如何创建一个ASP.NET Core程序并将其编译成Docker镜像，并Docker环境针对该镜像创建一个容器来启动一个应用实例。简单起见，我们还是直接采用脚手架命令行的形式来创建这个ASP.NET Core应用。如下图1所示，我们执行dotnet new web命令在”d:\projects\helloworld”目录下创建一个空的ASP.NET Core应用。</p>
+<h3 id="二、定义Dokerfile"><a href="#二、定义Dokerfile" class="headerlink" title="二、定义Dokerfile"></a>二、定义Dokerfile</h3><p>我们现在需要将这个ASP.NET Core应用制作成一个Docker镜像，为此我们需要在项目根目录下创建一个Dockerfile文件（文件名就是Dokerfile，没有扩展名），并在该文件中定义如下的内容。如果我们对Dockerfile具有基本的了解，对于这个文件的内容应该不难理解。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 1. 指定编译和发布应用的镜像</span><br><span class="line">FROM mcr.microsoft.com/dotnet/core/sdk:3.0 AS build</span><br><span class="line"></span><br><span class="line"># 2. 指定（编译和发布）工作目录</span><br><span class="line">WORKDIR /app</span><br><span class="line"></span><br><span class="line"># 3. 拷贝.csproj到工作目录/app，然后执行dotnet restore恢复所有安装的NuGet包</span><br><span class="line">COPY *.csproj ./</span><br><span class="line">RUN dotnet restore</span><br><span class="line"></span><br><span class="line"># 4. 拷贝所有文件到工作目录(/app)，然后执行dotnet publish命令将应用发布到/app/out目录下</span><br><span class="line">COPY . ./</span><br><span class="line">RUN dotnet publish -c Release -o out</span><br><span class="line"></span><br><span class="line"># 5. 编译生成Docker镜像</span><br><span class="line"># 5.1.设置基础镜像</span><br><span class="line">FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS runtime</span><br><span class="line"></span><br><span class="line"># 5.2. 设置（运行）工作目录，并将发布文件拷贝到out子目录下</span><br><span class="line">WORKDIR /app</span><br><span class="line">COPY --from= build /app/out .</span><br><span class="line"></span><br><span class="line"># 5.3. 利用环境变量设置ASP.NET Core应用的监听地址</span><br><span class="line">ENV ASPNETCORE_URLS http://0.0.0.0:3721</span><br><span class="line"></span><br><span class="line"># 5.4. 执行dotnet命令启动ASP.NET Core应用</span><br><span class="line">ENTRYPOINT [&quot;dotnet&quot;, &quot;helloworld.dll&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>这个Dockerfile采用了一个中间层（build）来暂存ASP.NET Core MVC应用发布后的资源，其工作目录为”/app”。具体来说，这个层采用”microsoft/aspnetcore-build:2”作为基础镜像，我们先将定义项目的.csproj文件（helloworld.csproj）拷贝到当前工作目录，然后运行”dotnet restore”命令恢复所有注册在这个项目文件中的NuGet包。接下来我们将当前项目的所有文件拷贝到当前工作目录，并执行dotnet publish对整个项目进行编译发布（针对Release模式），发布后的资源被保存到目录”/app/out”中。</p>
+<p>在真正将编译生成Docker镜像的时候，我们采用”mcr.microsoft.com/dotnet/core/aspnet:3.0”作为基础镜像，由于应用在上面进行了预先发布，所以我们只需要将发布后的所有文件拷贝到当前工作目录就可以了。接下来我们通过环境变量设置了ASP.NET Core应用的监听地址 “<a href="http://0.0.0.0:3721&quot;">http://0.0.0.0:3721&quot;</a> 。 针对ENTRYPOINT的定义（ENTRYPOINT [“dotnet”, “helloworld.dll”]），我们知道当容器被启动的时候，”dotnet helloworld.dll”命令会被执行以启动这个ASP.NET Core应用。</p>
+<h3 id="三、生成镜像"><a href="#三、生成镜像" class="headerlink" title="三、生成镜像"></a>三、生成镜像</h3><p>Dockerfile文件定义好之后，我们打开CMD命令行并切换到项目所在根目录（也就是Dockerfile文件所在的目录），然后执行”docker build -t helloworldapp .”命令，该命令会利用这个Dockerfile文件生成一个命名为helloworldapp”的Docker镜像。</p>
+<h3 id="四、启动容器"><a href="#四、启动容器" class="headerlink" title="四、启动容器"></a>四、启动容器</h3><p>既然Docker镜像已经被成功创建出来了，那么余下的工作就很简单了，我们只需要针对这个镜像创建对应的容器，最终的ASP.NET Core应用的启动就可以直接通过启动该容器来完成。如下图所示，我们执行”docker run -d -p 8080:3721 –name myapp helloworldapp”命令针对前面生成的Docker镜像（helloworldapp）创建并启动了一个命名为myapp（–name myapp）的容器。由于我们从外面访问这个应用，所以我们通过端口映射（-p 8080:3721）将内部监听端口3721映射为当前宿主机器的端口8080，所以我们利用地址 “<a href="http://localhost:8080&quot;">http://localhost:8080&quot;</a> 访问这个通过Docker容器承载的ASP.NET Core应用。</p>
+]]></content>
+      <categories>
+        <category>ASP.NET Core 3</category>
+      </categories>
+      <tags>
+        <tag>.netcore</tag>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ASP.NET Core 3 DDD驱动设计</title>
     <url>/2019/09/25/ddd/</url>
     <content><![CDATA[<h4 id="基础设施层"><a href="#基础设施层" class="headerlink" title="基础设施层"></a>基础设施层</h4><blockquote>
@@ -95,27 +116,6 @@
       <tags>
         <tag>nodejs</tag>
         <tag>pm2</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ASP.NET Core 3 Docker</title>
-    <url>/2019/10/24/docker/</url>
-    <content><![CDATA[<p>对于一个 .NET Core开发人员，你可能没有使用过Docker，但是你不可能没有听说过Docker。Docker是Github上最受欢迎的开源项目之一，它号称要成为所有云应用的基石，并把互联网升级到下一代。Docker是dotCloud公司开源的一款产品，从其诞生那一刻算起，在短短两三年时间里就成为了开源社区最火爆的项目。对于完全拥抱开源的.NET Core来说，它自然应该对Docker提供完美的支持。对于接下来的内容，我们假设你已经对Docker有了基本的了解，并且在你的机器上已经安装了Docker。</p>
-<h3 id="一、创建一个ASP-NET-Core应用"><a href="#一、创建一个ASP-NET-Core应用" class="headerlink" title="一、创建一个ASP.NET Core应用"></a>一、创建一个ASP.NET Core应用</h3><p>我们将演示如何创建一个ASP.NET Core程序并将其编译成Docker镜像，并Docker环境针对该镜像创建一个容器来启动一个应用实例。简单起见，我们还是直接采用脚手架命令行的形式来创建这个ASP.NET Core应用。如下图1所示，我们执行dotnet new web命令在”d:\projects\helloworld”目录下创建一个空的ASP.NET Core应用。</p>
-<h3 id="二、定义Dokerfile"><a href="#二、定义Dokerfile" class="headerlink" title="二、定义Dokerfile"></a>二、定义Dokerfile</h3><p>我们现在需要将这个ASP.NET Core应用制作成一个Docker镜像，为此我们需要在项目根目录下创建一个Dockerfile文件（文件名就是Dokerfile，没有扩展名），并在该文件中定义如下的内容。如果我们对Dockerfile具有基本的了解，对于这个文件的内容应该不难理解。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 1. 指定编译和发布应用的镜像</span><br><span class="line">FROM mcr.microsoft.com/dotnet/core/sdk:3.0 AS build</span><br><span class="line"></span><br><span class="line"># 2. 指定（编译和发布）工作目录</span><br><span class="line">WORKDIR /app</span><br><span class="line"></span><br><span class="line"># 3. 拷贝.csproj到工作目录/app，然后执行dotnet restore恢复所有安装的NuGet包</span><br><span class="line">COPY *.csproj ./</span><br><span class="line">RUN dotnet restore</span><br><span class="line"></span><br><span class="line"># 4. 拷贝所有文件到工作目录(/app)，然后执行dotnet publish命令将应用发布到/app/out目录下</span><br><span class="line">COPY . ./</span><br><span class="line">RUN dotnet publish -c Release -o out</span><br><span class="line"></span><br><span class="line"># 5. 编译生成Docker镜像</span><br><span class="line"># 5.1.设置基础镜像</span><br><span class="line">FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS runtime</span><br><span class="line"></span><br><span class="line"># 5.2. 设置（运行）工作目录，并将发布文件拷贝到out子目录下</span><br><span class="line">WORKDIR /app</span><br><span class="line">COPY --from= build /app/out .</span><br><span class="line"></span><br><span class="line"># 5.3. 利用环境变量设置ASP.NET Core应用的监听地址</span><br><span class="line">ENV ASPNETCORE_URLS http://0.0.0.0:3721</span><br><span class="line"></span><br><span class="line"># 5.4. 执行dotnet命令启动ASP.NET Core应用</span><br><span class="line">ENTRYPOINT [&quot;dotnet&quot;, &quot;helloworld.dll&quot;]</span><br></pre></td></tr></table></figure>
-
-<p>这个Dockerfile采用了一个中间层（build）来暂存ASP.NET Core MVC应用发布后的资源，其工作目录为”/app”。具体来说，这个层采用”microsoft/aspnetcore-build:2”作为基础镜像，我们先将定义项目的.csproj文件（helloworld.csproj）拷贝到当前工作目录，然后运行”dotnet restore”命令恢复所有注册在这个项目文件中的NuGet包。接下来我们将当前项目的所有文件拷贝到当前工作目录，并执行dotnet publish对整个项目进行编译发布（针对Release模式），发布后的资源被保存到目录”/app/out”中。</p>
-<p>在真正将编译生成Docker镜像的时候，我们采用”mcr.microsoft.com/dotnet/core/aspnet:3.0”作为基础镜像，由于应用在上面进行了预先发布，所以我们只需要将发布后的所有文件拷贝到当前工作目录就可以了。接下来我们通过环境变量设置了ASP.NET Core应用的监听地址 “<a href="http://0.0.0.0:3721&quot;">http://0.0.0.0:3721&quot;</a> 。 针对ENTRYPOINT的定义（ENTRYPOINT [“dotnet”, “helloworld.dll”]），我们知道当容器被启动的时候，”dotnet helloworld.dll”命令会被执行以启动这个ASP.NET Core应用。</p>
-<h3 id="三、生成镜像"><a href="#三、生成镜像" class="headerlink" title="三、生成镜像"></a>三、生成镜像</h3><p>Dockerfile文件定义好之后，我们打开CMD命令行并切换到项目所在根目录（也就是Dockerfile文件所在的目录），然后执行”docker build -t helloworldapp .”命令，该命令会利用这个Dockerfile文件生成一个命名为helloworldapp”的Docker镜像。</p>
-<h3 id="四、启动容器"><a href="#四、启动容器" class="headerlink" title="四、启动容器"></a>四、启动容器</h3><p>既然Docker镜像已经被成功创建出来了，那么余下的工作就很简单了，我们只需要针对这个镜像创建对应的容器，最终的ASP.NET Core应用的启动就可以直接通过启动该容器来完成。如下图所示，我们执行”docker run -d -p 8080:3721 –name myapp helloworldapp”命令针对前面生成的Docker镜像（helloworldapp）创建并启动了一个命名为myapp（–name myapp）的容器。由于我们从外面访问这个应用，所以我们通过端口映射（-p 8080:3721）将内部监听端口3721映射为当前宿主机器的端口8080，所以我们利用地址 “<a href="http://localhost:8080&quot;">http://localhost:8080&quot;</a> 访问这个通过Docker容器承载的ASP.NET Core应用。</p>
-]]></content>
-      <categories>
-        <category>ASP.NET Core 3</category>
-      </categories>
-      <tags>
-        <tag>.netcore</tag>
-        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>

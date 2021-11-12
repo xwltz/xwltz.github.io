@@ -3,11 +3,11 @@
   <title>xwltzの技术小站</title>
   
   <subtitle>个人网站</subtitle>
-  <link href="https://www.xwltz.top/atom.xml" rel="self"/>
+  <link href="https://xwltz.github.io/atom.xml" rel="self"/>
   
-  <link href="https://www.xwltz.top/"/>
+  <link href="https://xwltz.github.io/"/>
   <updated>2021-11-12T00:53:25.842Z</updated>
-  <id>https://www.xwltz.top/</id>
+  <id>https://xwltz.github.io/</id>
   
   <author>
     <name>xwltz</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>lombok</title>
-    <link href="https://www.xwltz.top/2019/12/26/lombok/"/>
-    <id>https://www.xwltz.top/2019/12/26/lombok/</id>
+    <link href="https://xwltz.github.io/2019/12/26/lombok/"/>
+    <id>https://xwltz.github.io/2019/12/26/lombok/</id>
     <published>2019-12-26T08:45:33.000Z</published>
     <updated>2021-11-12T00:53:25.842Z</updated>
     
@@ -33,19 +33,19 @@
     
     
     
-    <category term="java" scheme="https://www.xwltz.top/categories/java/"/>
+    <category term="java" scheme="https://xwltz.github.io/categories/java/"/>
     
     
-    <category term="java" scheme="https://www.xwltz.top/tags/java/"/>
+    <category term="java" scheme="https://xwltz.github.io/tags/java/"/>
     
-    <category term="lomobk" scheme="https://www.xwltz.top/tags/lomobk/"/>
+    <category term="lomobk" scheme="https://xwltz.github.io/tags/lomobk/"/>
     
   </entry>
   
   <entry>
     <title>chrome 取消隐藏https和www</title>
-    <link href="https://www.xwltz.top/2019/11/06/chrome/"/>
-    <id>https://www.xwltz.top/2019/11/06/chrome/</id>
+    <link href="https://xwltz.github.io/2019/11/06/chrome/"/>
+    <id>https://xwltz.github.io/2019/11/06/chrome/</id>
     <published>2019-11-06T02:04:35.000Z</published>
     <updated>2019-11-06T02:07:10.783Z</updated>
     
@@ -60,17 +60,17 @@
     
     
     
-    <category term="web" scheme="https://www.xwltz.top/categories/web/"/>
+    <category term="web" scheme="https://xwltz.github.io/categories/web/"/>
     
     
-    <category term="chrome" scheme="https://www.xwltz.top/tags/chrome/"/>
+    <category term="chrome" scheme="https://xwltz.github.io/tags/chrome/"/>
     
   </entry>
   
   <entry>
     <title>pm2 + nodejs</title>
-    <link href="https://www.xwltz.top/2019/10/26/pm2/"/>
-    <id>https://www.xwltz.top/2019/10/26/pm2/</id>
+    <link href="https://xwltz.github.io/2019/10/26/pm2/"/>
+    <id>https://xwltz.github.io/2019/10/26/pm2/</id>
     <published>2019-10-26T03:37:16.000Z</published>
     <updated>2019-10-26T03:44:00.067Z</updated>
     
@@ -84,19 +84,19 @@
     
     
     
-    <category term="nodejs" scheme="https://www.xwltz.top/categories/nodejs/"/>
+    <category term="nodejs" scheme="https://xwltz.github.io/categories/nodejs/"/>
     
     
-    <category term="nodejs" scheme="https://www.xwltz.top/tags/nodejs/"/>
+    <category term="nodejs" scheme="https://xwltz.github.io/tags/nodejs/"/>
     
-    <category term="pm2" scheme="https://www.xwltz.top/tags/pm2/"/>
+    <category term="pm2" scheme="https://xwltz.github.io/tags/pm2/"/>
     
   </entry>
   
   <entry>
     <title>ASP.NET Core 3 Docker</title>
-    <link href="https://www.xwltz.top/2019/10/24/docker/"/>
-    <id>https://www.xwltz.top/2019/10/24/docker/</id>
+    <link href="https://xwltz.github.io/2019/10/24/docker/"/>
+    <id>https://xwltz.github.io/2019/10/24/docker/</id>
     <published>2019-10-24T08:05:10.000Z</published>
     <updated>2021-11-12T07:19:47.757Z</updated>
     
@@ -110,19 +110,19 @@
     
     
     
-    <category term="ASP.NET Core 3" scheme="https://www.xwltz.top/categories/ASP-NET-Core-3/"/>
+    <category term="ASP.NET Core 3" scheme="https://xwltz.github.io/categories/ASP-NET-Core-3/"/>
     
     
-    <category term=".netcore" scheme="https://www.xwltz.top/tags/netcore/"/>
+    <category term=".netcore" scheme="https://xwltz.github.io/tags/netcore/"/>
     
-    <category term="Docker" scheme="https://www.xwltz.top/tags/Docker/"/>
+    <category term="Docker" scheme="https://xwltz.github.io/tags/Docker/"/>
     
   </entry>
   
   <entry>
     <title>ASP.NET Core 3 DDD驱动设计</title>
-    <link href="https://www.xwltz.top/2019/09/25/ddd/"/>
-    <id>https://www.xwltz.top/2019/09/25/ddd/</id>
+    <link href="https://xwltz.github.io/2019/09/25/ddd/"/>
+    <id>https://xwltz.github.io/2019/09/25/ddd/</id>
     <published>2019-09-25T03:53:20.000Z</published>
     <updated>2019-10-24T08:49:54.114Z</updated>
     
@@ -137,12 +137,12 @@
     
     
     
-    <category term="ASP.NET Core 3" scheme="https://www.xwltz.top/categories/ASP-NET-Core-3/"/>
+    <category term="ASP.NET Core 3" scheme="https://xwltz.github.io/categories/ASP-NET-Core-3/"/>
     
     
-    <category term=".netcore" scheme="https://www.xwltz.top/tags/netcore/"/>
+    <category term=".netcore" scheme="https://xwltz.github.io/tags/netcore/"/>
     
-    <category term="DDD设计" scheme="https://www.xwltz.top/tags/DDD%E8%AE%BE%E8%AE%A1/"/>
+    <category term="DDD设计" scheme="https://xwltz.github.io/tags/DDD%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
