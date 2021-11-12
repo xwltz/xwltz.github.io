@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>xwltzの技术小站</title>
+  
+  <subtitle>个人网站</subtitle>
+  <link href="https://www.xwltz.top/atom.xml" rel="self"/>
+  
+  <link href="https://www.xwltz.top/"/>
+  <updated>2021-11-12T00:53:25.842Z</updated>
+  <id>https://www.xwltz.top/</id>
+  
+  <author>
+    <name>xwltz</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>lombok</title>
+    <link href="https://www.xwltz.top/2019/12/26/lombok/"/>
+    <id>https://www.xwltz.top/2019/12/26/lombok/</id>
+    <published>2019-12-26T08:45:33.000Z</published>
+    <updated>2021-11-12T00:53:25.842Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="POJO类常用注解"><a href="#POJO类常用注解" class="headerlink" title="POJO类常用注解:"></a>POJO类常用注解:</h3><p>@Getter/@Setter: 作用类上，生成所有成员变量的getter/setter方法；作用于成员变量上，生成该成员变量的getter/setter方法。可以设定访问权限及是否懒加载等。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Sette</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> age; </span><br><span class="line">  <span class="keyword">private</span> String email;</span><br><span class="line">  <span class="keyword">private</span> String address; </span><br><span class="line">  <span class="keyword">private</span> String password;</span><br><span class="line">  <span class="meta">@Getter</span> <span class="meta">@Setter</span> <span class="keyword">private</span> <span class="keyword">boolean</span> funny;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>@ToString：作用于类，覆盖默认的toString()方法，可以通过of属性限定显示某些字段，通过exclude属性排除某些字段；<br>@EqualsAndHashCode：作用于类，覆盖默认的equals和hashCode；<br>@NonNull：主要作用于成员变量和参数中，标识不能为空，否则抛出空指针异常；</p><p>@NoArgsConstructor, @RequiredArgsConstructor, @AllArgsConstructor：作用于类上，用于生成构造函数。<br>有staticName、access等属性，staticName属性一旦设定，将采用静态方法的方式生成实例，access属性可以限定访问权限。</p><p>@NoArgsConstructor：生成无参构造器；<br>@RequiredArgsConstructor：生成包含final和@NonNull注解的成员变量的构造器；<br>@AllArgsConstructor：生成全参构造器；<br>@Data：作用于类上，是以下注解的集合：@ToString @EqualsAndHashCode @Getter @Setter @RequiredArgsConstructor</p><p>@Builder：作用于类上，将类转变为建造者模式；<br>@Log：作用于类上，生成日志变量。针对不同的日志实现产品，有不同的注解；</p><h3 id="其他重要注解："><a href="#其他重要注解：" class="headerlink" title="其他重要注解："></a>其他重要注解：</h3><p>@Cleanup：自动关闭资源，针对实现了java.io.Closeable接口的对象有效，如：典型的IO流对象；<br>@SneakyThrows：可以对受检异常进行捕捉并抛出；<br>@Synchronized：作用于方法级别，可以替换synchronize关键字或lock锁，用处不大；</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;POJO类常用注解&quot;&gt;&lt;a href=&quot;#POJO类常用注解&quot; class=&quot;headerlink&quot; title=&quot;POJO类常用注解:&quot;&gt;&lt;/a&gt;POJO类常用注解:&lt;/h3&gt;&lt;p&gt;@Getter/@Setter: 作用类上，生成所有成员变量的getter/se</summary>
+      
+    
+    
+    
+    <category term="java" scheme="https://www.xwltz.top/categories/java/"/>
+    
+    
+    <category term="java" scheme="https://www.xwltz.top/tags/java/"/>
+    
+    <category term="lomobk" scheme="https://www.xwltz.top/tags/lomobk/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>chrome 取消隐藏https和www</title>
+    <link href="https://www.xwltz.top/2019/11/06/chrome/"/>
+    <id>https://www.xwltz.top/2019/11/06/chrome/</id>
+    <published>2019-11-06T02:04:35.000Z</published>
+    <updated>2019-11-06T02:07:10.783Z</updated>
+    
+    <content type="html"><![CDATA[<p>经测试，可以在 chrome://flags F12控制台执行</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">&#x27;omnibox-ui-hide-steady-state-url-path-query-and-ref&#x27;,</span><br><span class="line">&#x27;omnibox-ui-hide-steady-state-url-scheme&#x27;,</span><br><span class="line">&#x27;omnibox-ui-hide-steady-state-url-trivial-subdomains&#x27;</span><br><span class="line">].forEach(function(f) &#123;</span><br><span class="line">    chrome.send(&#x27;enableExperimentalFeature&#x27;, [f + &#x27;@2&#x27;, &#x27;true&#x27;]);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>来禁用这几个选项。代码中 <code>@2</code> 对应的是 Disabled。<code>@0</code> 和 <code>@1</code> 分别对应 Default 和 Enabled。<br>完成后重启chrome<br>chrome版本号：79.0.3941.4（正式版本）（32 位）</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;经测试，可以在 chrome://flags F12控制台执行&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br</summary>
+      
+    
+    
+    
+    <category term="web" scheme="https://www.xwltz.top/categories/web/"/>
+    
+    
+    <category term="chrome" scheme="https://www.xwltz.top/tags/chrome/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>pm2 + nodejs</title>
+    <link href="https://www.xwltz.top/2019/10/26/pm2/"/>
+    <id>https://www.xwltz.top/2019/10/26/pm2/</id>
+    <published>2019-10-26T03:37:16.000Z</published>
+    <updated>2019-10-26T03:44:00.067Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="为什么需要使用PM2"><a href="#为什么需要使用PM2" class="headerlink" title="为什么需要使用PM2"></a>为什么需要使用PM2</h3><p>因为node.js 是单进程，进程被杀死后整个服务就跪了，所以需要进程管理工具，但是pm2 远远不止这些。</p><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>PM2 是一个带有负载均衡功能的 Node 应用的进程管理器。<br>当你要把你的独立代码利用全部的服务器上的所有 CPU，并保证进程永远都活着，0 秒的重载，PM2 是完美的。</p><h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul><li>内建负载均衡（使用Node cluster 集群模块）</li><li>后台运行</li><li>0秒停机重载(维护升级的时候不需要停机).</li><li>具有Ubuntu和CentOS 的启动脚本</li><li>停止不稳定的进程（避免无限循环）</li><li>控制台检测</li><li>提供 HTTP API</li><li>远程控制和实时的接口API ( Nodejs 模块,允许和PM2进程管理器交互 )</li></ul><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>首先确保有node.js 的环境</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pm2</span><br></pre></td></tr></table></figure><h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 start app.js --name my-api # 命名进程</span><br></pre></td></tr></table></figure><h3 id="其他运行方式"><a href="#其他运行方式" class="headerlink" title="其他运行方式"></a>其他运行方式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pm2 start app.js -i max  # 根据有效CPU数目启动最大进程数目</span><br><span class="line">pm2 start app.js -i 3      # 启动3个进程</span><br><span class="line">pm2 start app.js -x        #用fork模式启动 app.js 而不是使用 cluster</span><br><span class="line">pm2 start app.js -x -- -a 23   # 用fork模式启动 app.js 并且传递参数 (-a 23)</span><br><span class="line">pm2 start app.js --name serverone  # 启动一个进程并把它命名为 serverone</span><br><span class="line">pm2 stop serverone       # 停止 serverone 进程</span><br><span class="line">pm2 start app.json        # 启动进程, 在 app.json里设置选项</span><br><span class="line">pm2 start app.js -i max -- -a 23                   #在--之后给 app.js 传递参数</span><br><span class="line">pm2 start app.js -i max -e err.log -o out.log  # 启动 并 生成一个配置文件，你也可以执行用其他语言编写的app  ( fork 模式):</span><br><span class="line">pm2 start my-bash-script.sh    -x --interpreter bash</span><br><span class="line">pm2 start my-python-script.py -x --interpreter python</span><br></pre></td></tr></table></figure><h3 id="npm-运行"><a href="#npm-运行" class="headerlink" title="npm 运行"></a>npm 运行</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 start npm -- start</span><br></pre></td></tr></table></figure><p>对一个进程并把它命名为 test</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 start npm --name test -- start</span><br></pre></td></tr></table></figure><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">npm install pm2 -g     # 命令行安装 pm2 </span><br><span class="line">pm2 start app.js -i 4 #后台运行pm2，启动4个app.js </span><br><span class="line">                      # 也可以把&#x27;max&#x27; 参数传递给 start</span><br><span class="line">                      # 正确的进程数目依赖于Cpu的核心数目</span><br><span class="line">pm2 start app.js --name my-api # 命名进程</span><br><span class="line">pm2 list               # 显示所有进程状态</span><br><span class="line">pm2 monit              # 监视所有进程</span><br><span class="line">pm2 logs               #  显示所有进程日志</span><br><span class="line">pm2 stop all           # 停止所有进程</span><br><span class="line">pm2 restart all        # 重启所有进程</span><br><span class="line">pm2 reload all         # 0秒停机重载进程 (用于 NETWORKED 进程)</span><br><span class="line">pm2 stop 0             # 停止指定的进程</span><br><span class="line">pm2 restart 0          # 重启指定的进程</span><br><span class="line">pm2 startup            # 产生 init 脚本 保持进程活着</span><br><span class="line">pm2 web                # 运行健壮的 computer API endpoint (http://localhost:9615)</span><br><span class="line">pm2 delete 0           # 杀死指定的进程</span><br><span class="line">pm2 delete all         # 杀死全部进程</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;为什么需要使用PM2&quot;&gt;&lt;a href=&quot;#为什么需要使用PM2&quot; class=&quot;headerlink&quot; title=&quot;为什么需要使用PM2&quot;&gt;&lt;/a&gt;为什么需要使用PM2&lt;/h3&gt;&lt;p&gt;因为node.js 是单进程，进程被杀死后整个服务就跪了，所以需要进程管理工</summary>
+      
+    
+    
+    
+    <category term="nodejs" scheme="https://www.xwltz.top/categories/nodejs/"/>
+    
+    
+    <category term="nodejs" scheme="https://www.xwltz.top/tags/nodejs/"/>
+    
+    <category term="pm2" scheme="https://www.xwltz.top/tags/pm2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ASP.NET Core 3 Docker</title>
+    <link href="https://www.xwltz.top/2019/10/24/docker/"/>
+    <id>https://www.xwltz.top/2019/10/24/docker/</id>
+    <published>2019-10-24T08:05:10.000Z</published>
+    <updated>2021-11-12T07:19:47.757Z</updated>
+    
+    <content type="html"><![CDATA[<p>对于一个 .NET Core开发人员，你可能没有使用过Docker，但是你不可能没有听说过Docker。Docker是Github上最受欢迎的开源项目之一，它号称要成为所有云应用的基石，并把互联网升级到下一代。Docker是dotCloud公司开源的一款产品，从其诞生那一刻算起，在短短两三年时间里就成为了开源社区最火爆的项目。对于完全拥抱开源的.NET Core来说，它自然应该对Docker提供完美的支持。对于接下来的内容，我们假设你已经对Docker有了基本的了解，并且在你的机器上已经安装了Docker。</p><h3 id="一、创建一个ASP-NET-Core应用"><a href="#一、创建一个ASP-NET-Core应用" class="headerlink" title="一、创建一个ASP.NET Core应用"></a>一、创建一个ASP.NET Core应用</h3><p>我们将演示如何创建一个ASP.NET Core程序并将其编译成Docker镜像，并Docker环境针对该镜像创建一个容器来启动一个应用实例。简单起见，我们还是直接采用脚手架命令行的形式来创建这个ASP.NET Core应用。如下图1所示，我们执行dotnet new web命令在”d:\projects\helloworld”目录下创建一个空的ASP.NET Core应用。</p><h3 id="二、定义Dokerfile"><a href="#二、定义Dokerfile" class="headerlink" title="二、定义Dokerfile"></a>二、定义Dokerfile</h3><p>我们现在需要将这个ASP.NET Core应用制作成一个Docker镜像，为此我们需要在项目根目录下创建一个Dockerfile文件（文件名就是Dokerfile，没有扩展名），并在该文件中定义如下的内容。如果我们对Dockerfile具有基本的了解，对于这个文件的内容应该不难理解。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"># 1. 指定编译和发布应用的镜像</span><br><span class="line">FROM mcr.microsoft.com/dotnet/core/sdk:3.0 AS build</span><br><span class="line"></span><br><span class="line"># 2. 指定（编译和发布）工作目录</span><br><span class="line">WORKDIR /app</span><br><span class="line"></span><br><span class="line"># 3. 拷贝.csproj到工作目录/app，然后执行dotnet restore恢复所有安装的NuGet包</span><br><span class="line">COPY *.csproj ./</span><br><span class="line">RUN dotnet restore</span><br><span class="line"></span><br><span class="line"># 4. 拷贝所有文件到工作目录(/app)，然后执行dotnet publish命令将应用发布到/app/out目录下</span><br><span class="line">COPY . ./</span><br><span class="line">RUN dotnet publish -c Release -o out</span><br><span class="line"></span><br><span class="line"># 5. 编译生成Docker镜像</span><br><span class="line"># 5.1.设置基础镜像</span><br><span class="line">FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS runtime</span><br><span class="line"></span><br><span class="line"># 5.2. 设置（运行）工作目录，并将发布文件拷贝到out子目录下</span><br><span class="line">WORKDIR /app</span><br><span class="line">COPY --from= build /app/out .</span><br><span class="line"></span><br><span class="line"># 5.3. 利用环境变量设置ASP.NET Core应用的监听地址</span><br><span class="line">ENV ASPNETCORE_URLS http://0.0.0.0:3721</span><br><span class="line"></span><br><span class="line"># 5.4. 执行dotnet命令启动ASP.NET Core应用</span><br><span class="line">ENTRYPOINT [&quot;dotnet&quot;, &quot;helloworld.dll&quot;]</span><br></pre></td></tr></table></figure><p>这个Dockerfile采用了一个中间层（build）来暂存ASP.NET Core MVC应用发布后的资源，其工作目录为”/app”。具体来说，这个层采用”microsoft/aspnetcore-build:2”作为基础镜像，我们先将定义项目的.csproj文件（helloworld.csproj）拷贝到当前工作目录，然后运行”dotnet restore”命令恢复所有注册在这个项目文件中的NuGet包。接下来我们将当前项目的所有文件拷贝到当前工作目录，并执行dotnet publish对整个项目进行编译发布（针对Release模式），发布后的资源被保存到目录”/app/out”中。</p><p>在真正将编译生成Docker镜像的时候，我们采用”mcr.microsoft.com/dotnet/core/aspnet:3.0”作为基础镜像，由于应用在上面进行了预先发布，所以我们只需要将发布后的所有文件拷贝到当前工作目录就可以了。接下来我们通过环境变量设置了ASP.NET Core应用的监听地址 “<a href="http://0.0.0.0:3721&quot;">http://0.0.0.0:3721&quot;</a> 。 针对ENTRYPOINT的定义（ENTRYPOINT [“dotnet”, “helloworld.dll”]），我们知道当容器被启动的时候，”dotnet helloworld.dll”命令会被执行以启动这个ASP.NET Core应用。</p><h3 id="三、生成镜像"><a href="#三、生成镜像" class="headerlink" title="三、生成镜像"></a>三、生成镜像</h3><p>Dockerfile文件定义好之后，我们打开CMD命令行并切换到项目所在根目录（也就是Dockerfile文件所在的目录），然后执行”docker build -t helloworldapp .”命令，该命令会利用这个Dockerfile文件生成一个命名为helloworldapp”的Docker镜像。</p><h3 id="四、启动容器"><a href="#四、启动容器" class="headerlink" title="四、启动容器"></a>四、启动容器</h3><p>既然Docker镜像已经被成功创建出来了，那么余下的工作就很简单了，我们只需要针对这个镜像创建对应的容器，最终的ASP.NET Core应用的启动就可以直接通过启动该容器来完成。如下图所示，我们执行”docker run -d -p 8080:3721 –name myapp helloworldapp”命令针对前面生成的Docker镜像（helloworldapp）创建并启动了一个命名为myapp（–name myapp）的容器。由于我们从外面访问这个应用，所以我们通过端口映射（-p 8080:3721）将内部监听端口3721映射为当前宿主机器的端口8080，所以我们利用地址 “<a href="http://localhost:8080&quot;">http://localhost:8080&quot;</a> 访问这个通过Docker容器承载的ASP.NET Core应用。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;对于一个 .NET Core开发人员，你可能没有使用过Docker，但是你不可能没有听说过Docker。Docker是Github上最受欢迎的开源项目之一，它号称要成为所有云应用的基石，并把互联网升级到下一代。Docker是dotCloud公司开源的一款产品，从其诞生那一刻</summary>
+      
+    
+    
+    
+    <category term="ASP.NET Core 3" scheme="https://www.xwltz.top/categories/ASP-NET-Core-3/"/>
+    
+    
+    <category term=".netcore" scheme="https://www.xwltz.top/tags/netcore/"/>
+    
+    <category term="Docker" scheme="https://www.xwltz.top/tags/Docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ASP.NET Core 3 DDD驱动设计</title>
+    <link href="https://www.xwltz.top/2019/09/25/ddd/"/>
+    <id>https://www.xwltz.top/2019/09/25/ddd/</id>
+    <published>2019-09-25T03:53:20.000Z</published>
+    <updated>2019-10-24T08:49:54.114Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="基础设施层"><a href="#基础设施层" class="headerlink" title="基础设施层"></a>基础设施层</h4><blockquote><p>基础设施层使用的相关知识：Code First ，EF Core，Autofac依赖注入，仓储模式的实现接口，领域服务的实现接口，缓存，以及各种基础工具类</p></blockquote><ol><li>Code First：使用Code First 数据迁移到数据库。<br>常用的数据库迁移命令：<br>Add-Migration 迁移名 —— 添加本次迁移<br>Update-Database——将本次迁移到数据库<br>Add-Migration InitialCreate -IgnoreChanges -—— 创建一次空的数据迁移：已现在版本为起始点</li><li>EF Core ：软删除 ——全局过滤删除的状态，AsNoTracking() ——不持久化到数据库时的查询使用 Any——查询判断使用Any ,Z.EntityFramework.Plus-——批量修改，删除，增删改查，简单封装异步 Anysnc Await 方法</li><li>工具类，例如MD5，AutoMapperHelper，LamdaHelper，RedisHelper简单应用，读取配置文件,统一返回参数等。</li><li>Redis缓存，多种数据类型，查询，插入效率高，Redis与数据库同步策略，先更新数据库在删除缓存，延时双删，（延时，根据数据查询的数据来判断延时的时间），使用StackExchange.Redis</li></ol><h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><blockquote><p>应用层使用的相关知识：AutoMapper，Dto，Autofac依赖注入</p></blockquote><ol><li>Dto：数据传输对象，主要是展现层和应用层传输数据</li><li>AutoMapper：对象之间传输数据，先使用仓储查询出数据，然后通过AutoMapper转换成前端需要的数据返回</li></ol><h4 id="领域层"><a href="#领域层" class="headerlink" title="领域层"></a>领域层</h4><blockquote><p>领域层使用的相关知识：实体，值对象，领域服务接口，仓储接口，聚合，Autofac依赖注入</p></blockquote><ol><li>实体：有唯一的标识（唯一，不可变），包含业务逻辑，以及自身的验证，构造函数实例化，实体的Set应设置为私有的</li><li>值对象：没有唯一的标识，用来描述一个东西的特征，代表是什么</li><li>聚合：聚合根是实体，聚合是对象的组合，由聚合本身维护自身的一致性，封装业务逻辑，聚合尽量小，聚合之间通过唯一标识引用</li><li>仓储：仓储是针对聚合的，封装领域逻辑，明确查询的意图，仓储中只维护聚合的状态，不进行持久化，仓储可以方便单元测试，更换ORM</li><li>领域服务：，领域服务是无状态的，有些业务逻辑不好放在聚合里面的可以使用领域服务，多个聚合根协调，领域服务中可以使用仓储</li><li>Autofac依赖注入：有利于项目层与层之间的解耦，方便单元测试，构造函数注入，依赖倒置，通过约定进行程序集的注入</li></ol><h4 id="展现层"><a href="#展现层" class="headerlink" title="展现层"></a>展现层</h4><ol><li>展现层使用的相关知识：.Net Core WebApi ,MVC,JWT Swagger,日志异常的捕捉，模型的验证，Log4Net，Autofac依赖注入，过滤器</li><li>JWT：JWT包含了使用.分隔的三部分： Header 头部 Payload 负载 Signature 签名，在前端每次请求加上JWT 签发的Token 来替代Session，进行访问页面的验证</li><li>Swagger：可以使用Swagger来请求WebApi ，以及查看WebApi 接口，Swagger可以做接口文档</li><li>Log4Net：日志异常的全局捕捉，记录日志到TXT中</li><li>过滤器：使用过滤器来进行模型的验证 ，Log4Net的日志异常的全局捕捉，以及权限的访问</li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;基础设施层&quot;&gt;&lt;a href=&quot;#基础设施层&quot; class=&quot;headerlink&quot; title=&quot;基础设施层&quot;&gt;&lt;/a&gt;基础设施层&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;基础设施层使用的相关知识：Code First ，EF Core，Autofac依赖注入，</summary>
+      
+    
+    
+    
+    <category term="ASP.NET Core 3" scheme="https://www.xwltz.top/categories/ASP-NET-Core-3/"/>
+    
+    
+    <category term=".netcore" scheme="https://www.xwltz.top/tags/netcore/"/>
+    
+    <category term="DDD设计" scheme="https://www.xwltz.top/tags/DDD%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
+  
+</feed>
