@@ -166,7 +166,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -177,7 +177,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -237,6 +237,284 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://xwltz.github.io/2021/11/22/202111221528/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="xwltz">
+      <meta itemprop="description" content="一枚煎熬8年.net, java, nodejs, vue开发经验的全栈开发工程师兼系统架构师兼产品经理兼项目经理 ^.^。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xwltzの技术小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/22/202111221528/" class="post-title-link" itemprop="url">Java技术你的项目应该如何正确分层</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-22 15:28:43 / 修改时间：15:48:10" itemprop="dateCreated datePublished" datetime="2021-11-22T15:28:43+08:00">2021-11-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/11/22/202111221528/" class="post-meta-item leancloud_visitors" data-flag-title="Java技术你的项目应该如何正确分层" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="一个好的应用分层需要具备以下几点"><a href="#一个好的应用分层需要具备以下几点" class="headerlink" title="一个好的应用分层需要具备以下几点:"></a>一个好的应用分层需要具备以下几点:</h3><ul>
+<li>方便后续代码进行维护扩展。</li>
+<li>分层的效果需要让整个团队都接受</li>
+<li>各个层职责边界清晰</li>
+</ul>
+<h3 id="如何进行分层"><a href="#如何进行分层" class="headerlink" title="如何进行分层"></a>如何进行分层</h3><h4 id="阿里规范"><a href="#阿里规范" class="headerlink" title="阿里规范"></a>阿里规范</h4><p>在阿里的编码规范中约束的分层如下:</p>
+<p>开放接口层：可直接封装 Service 方法暴露成 RPC 接口;通过 Web 封装成 http 接口;进行<br>网关安全控制、流量控制等。</p>
+<p>终端显示层：各个端的模板渲染并执行显示的层。当前主要是 velocity 渲染，JS 渲染， JSP 渲染，移动端展示等。</p>
+<p>Web层：主要是对访问控制进行转发，各类基本参数校验，或者不复用的业务简单处理等。</p>
+<p>Service层：相对具体的业务逻辑服务层。</p>
+<p>Manager层：通用业务处理层，它有如下特征：</p>
+<ol>
+<li>对第三方平台封装的层，预处理返回结果及转化异常信息;</li>
+<li>对Service层通用能力的下沉，如缓存方案、中间件通用处理;</li>
+<li>与DAO层交互，对多个DAO的组合复用;</li>
+</ol>
+<p>DAO层：数据访问层，与底层 MySQL、Oracle、Hbase 进行数据交互。</p>
+<p>阿里巴巴规约中的分层比较清晰简单明了，但是描述得还是过于简单了，以及service层和manager层有很多同学还是有点分不清楚之间的关系，就导致了很多项目中根本没有Manager层的存在。下面介绍一下具体业务中应该如何实现分层。</p>
+<h5 id="优化分层"><a href="#优化分层" class="headerlink" title="优化分层"></a>优化分层</h5><ol>
+<li>Controller和TService是我们阿里分层规范里面的第一层:轻业务逻辑，参数校验，异常兜底。通常这种接口可以轻易更换接口类型,所以业务逻辑必须要轻，甚至不做具体逻辑。</li>
+<li>Service：业务层。复用性较低，这里推荐每一个controller方法都得对应一个service，不要把业务编排放在controller中去做。</li>
+<li>Manager：可复用逻辑层。这里的Manager可以是单个服务的，比如我们的cache,mq等等，当然也可以是复合的，当你需要调用多个Manager的时候，这个可以合为一个Manager，比如逻辑上的连表查询等。如果是httpManager或rpcManager需要在这一层做一些数据转换</li>
+<li>DAO：数据库访问层。主要负责 “操作数据库的某张表，映射到某个java对象”，dao应该只允许自己的Service访问，其他Service要访问我的数据必须通过对应的Service。</li>
+</ol>
+<h3 id="分层领域模型的转换"><a href="#分层领域模型的转换" class="headerlink" title="分层领域模型的转换"></a>分层领域模型的转换</h3><p>在阿里巴巴编码规约中列举了下面几个领域模型规约:</p>
+<ul>
+<li><p>DO(Data Object)：与数据库表结构一一对应，通过DAO层向上传输数据源对象。</p>
+</li>
+<li><p>DTO(Data Transfer Object)：数据传输对象，Service或Manager向外传输的对象。</p>
+</li>
+<li><p>BO(Business Object)：业务对象。由Service层输出的封装业务逻辑的对象。</p>
+</li>
+<li><p>AO(Application Object)：应用对象。在Web层与Service层之间抽象的复用对象模型，极为贴近展示层，复用度不高。</p>
+</li>
+<li><p>VO(View Object)：显示层对象，通常是Web向模板渲染引擎层传输的对象。</p>
+</li>
+<li><p>Query：数据查询对象，各层接收上层的查询请求。注意超过2个参数的查询封装，禁止使用Map类来传输。</p>
+</li>
+</ul>
+<p>每一个层基本都自己对应的领域模型，这样就导致了有些人过于追求每一层都是用自己的领域模型，这样就导致了一个对象可能会出现3次甚至4次转换在一次请求中，当返回的时候同样也会出现3-4次转换，这样有可能一次完整的请求-返回会出现很多次对象转换。如果在开发中真的按照这么来，恐怕就别写其他的了，一天就光写这个重复无用的逻辑算了吧。</p>
+<p>所以我们得采取一个折中的方案:</p>
+<ol>
+<li>允许Service/Manager可以操作数据领域模型，对于这个层级来说，本来自己做的工作也是做的是业务逻辑处理和数据组装。</li>
+<li>Controller/TService层的领域模型不允许传入DAO层，这样就不符合职责划分了。</li>
+<li>同理，不允许DAO层的数据传入到Controller/TService.</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>总的来说业务分层对于代码规范是比较重要，决定着以后的代码是否可复用，是否职责清晰，边界清晰。<br>当然这种分层其实见仁见智，团队中的所有人的分层习惯也不同，所以很难权衡出一个标准的准则，总的来说只要满足职责逻辑清晰，后续维护容易，就是适合场景的分层。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://xwltz.github.io/2021/11/13/springboot%20no%20scan%20component/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="xwltz">
+      <meta itemprop="description" content="一枚煎熬8年.net, java, nodejs, vue开发经验的全栈开发工程师兼系统架构师兼产品经理兼项目经理 ^.^。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xwltzの技术小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/13/springboot%20no%20scan%20component/" class="post-title-link" itemprop="url">spring boot 扫描不到描 java模块中的组件</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-13 08:57:10 / 修改时间：09:24:14" itemprop="dateCreated datePublished" datetime="2021-11-13T08:57:10+08:00">2021-11-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/11/13/springboot%20no%20scan%20component/" class="post-meta-item leancloud_visitors" data-flag-title="spring boot 扫描不到描 java模块中的组件" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="SpringBoot扫描不到组件"><a href="#SpringBoot扫描不到组件" class="headerlink" title="SpringBoot扫描不到组件"></a>SpringBoot扫描不到组件</h3><p>最近接手一套基于SpringBoot项目，对项目进行重构调整，将公共部分抽离成子项目。在实践的过程中，发现抽离之后的模板中组件并没有被初始化。于是将排查解决过程中搜集到的方案及知识汇总分享给大家。</p>
+<p>问题原因<br>问题的原因很简单，因多套系统的package命名不一致。比如业务系统的包命名为com.abc.xx，而公共（common）部分的包命名为com.efg.xx，引入公共jar包时默认是无法初始化的。</p>
+<p><img src="../images/post/1.png" alt="img.png"></p>
+<p>对于SpringBoot项目，我们知道扫描的路径从启动类所在包开始，扫描当前包及其子级包下的所有文件。上图如果启动类在com.abc包下，肯定是无法扫描到com.def包内的组件的。</p>
+<p>场景延伸<br>SpringBoot的这个机制还延伸出另外两个场景。</p>
+<p>第一个场景是如果SpringBoot的启动类放的包路径靠下，那么在它上级目录中的组件是无法被扫描并初始化的。新手往往会因放错位置导致启动时异常。</p>
+<p>第二个场景是故意将一些不需要纳入SpringBoot容器的类放在其他包中，避免被SpringBoot容器加载。当然此时也可以使用ComponentScan来指定排除对应的包。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">├── src</span><br><span class="line">│   ├── main</span><br><span class="line">│   │   ├── java</span><br><span class="line">│   │   │   └── com</span><br><span class="line">│   │   │       └── project</span><br><span class="line">│   │   │           ├── SpringBootMainApplication.java</span><br><span class="line">│   │   │           ├── controller</span><br><span class="line">│   │   │           │   └── DruidController.java</span><br><span class="line">│   │   │           ├── model</span><br><span class="line">│   │   │           │   └── Order.java</span><br><span class="line">│   │   │           └── service</span><br><span class="line">│   │   │               ├── OrderService.java</span><br><span class="line">│   │   │               └── impl</span><br><span class="line">│   │   │                   └── OrderServiceImpl.java</span><br></pre></td></tr></table></figure>
+<p>上述项目结构中，如果将类直接放在com目录或com目录的其他子目录下，默认是不会被初始化的。</p>
+<p>通过@ComponentScan扫描<br>回到正题，遇到类似不被初始化的情况，我们可以使用的最简单的方案就是手动指定扫描包路径。</p>
+<p>在启动类上的@SpringBootApplication注解内部集成了@ComponentScan注解。此时我们可以显示的指定扫描的包。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@ComponentScan(&#123;&quot;com.abc.xx&quot;,&quot;com.def.xx&quot;&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringBootMainApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		SpringApplication.run(SpringBootMainApplication.class, args);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此种用法一定要先包含本项目要扫描的路径“com.abc.xx”，然后再在后面添加上common项目要扫描的路径“com.def.xx”。</p>
+<p>如果其他项目不需要初始化common中的内容，则可不进行指定。</p>
+<p>自定义@Enable****注解<br>上述方法虽然能够解决问题，但如果直接写包名，难免没有个统一的规范。此时可考虑使用@Enable类型的注解。</p>
+<p>了解SpringBoot机制的朋友都知道，最重要的一个注解便是@EnableAutoConfiguration。类似的，我们定义一个可以通过注解之后便可使用的Enable注解。</p>
+<p><img src="../images/post/2.png" alt="img.png"></p>
+<p>定义配置类，在配置类中指定要扫描的包路径：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;com.def.xx&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CommonConfig</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>定义Enable注解类，并通过@Import导入配置类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(&#123;ElementType.TYPE&#125;)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Import(CommonConfig.class)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@interface</span> EnableCommon &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后，在启动类中便可使用@EnableCommon此注解来指定实例化对应的package。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableCommon</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringBootMainApplication</span> </span>&#123;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在此过程中需要注意的是CommonConfig是位于common项目当中的。如果CommonConfig直接可被SpringBoot扫描到，那也就不需要EnableCommon注解了。</p>
+<p>自定义starter<br>我们使用SpringBoot之所以方便，得益于它的特性之一便是可以使用已经集成好的starter。同样，我们也可以自定义一套starter来达到自动化配置的效果。</p>
+<p>由于这种模式更适用于自动化集成某一个组件，并不太适合这里说的common公共项目。因此就不再代码演示，只说一下大概的思路。详细实例可参考我的新书《SpringBoot技术内幕：架构设计与实现原理》。</p>
+<p>定义starter首先需要依赖自动配置的组件，也就是pom文件中添加如下配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-autoconfigure<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后再定义具体的服务（或初始化）类，比如HelloWorldService以及该服务类初始化的参数类HelloWorldProperties。通过@ConfigurationProperties注解可以将Application中对应的属性初始化到类的属性中。</p>
+<p>然后呢，再提供一个基于@ConditionalOnClass配置的HelloWorldAutoConfiguration类，指定当HelloWorldService存在于类路径时，便会进行初始化。</p>
+<p>最后一步，在META-INF目录下创建spring.factories，启动添加类似如下配置：</p>
+<h3 id="Auto-Configure"><a href="#Auto-Configure" class="headerlink" title="Auto Configure"></a>Auto Configure</h3><p>org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.secbro.HelloWorldAutoConfiguration<br>该类是为SpringBoot提供的扫描入口。</p>
+<p>此时，当其他项目需要该starter时，直接引入便可注入使用HelloWorldService类了。</p>
+<p>关于此处建议大家专门看一篇相关的实战文章，可以更好的理解。这里只提供了一个大概的思路。</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>关于SpringBoot的@ComponentScan基本上已经可以满足需求了，第二种方案是基于@ComponentScan的改进方案。而第三种方案更多的是基于SpringBoot的核心原理来处理的。当然最好是避免同一个项目使用多个顶级package。</p>
+<p>通过本篇文章的脉络，我们可以看到一种学习的方式，通过一个知识点或一个实战中的问题，可以逐步将知识从点扩充到面，这样不仅能加大学习的范围，也能构建更牢固的知识图谱。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -831,13 +1109,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">6k</span>
+    <span title="站点总字数">11k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">12 分钟</span>
+    <span title="站点阅读时长">20 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
