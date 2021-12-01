@@ -166,18 +166,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -237,6 +237,132 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://xwltz.github.io/2021/12/01/202112011640/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="xwltz">
+      <meta itemprop="description" content="一枚煎熬8年.net, java, nodejs, vue开发经验的全栈开发工程师兼系统架构师兼产品经理兼项目经理 ^.^。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xwltzの技术小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/01/202112011640/" class="post-title-link" itemprop="url">阿里云服务器扩容数据盘无需迁移数据重新挂载</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-12-01 16:40:55 / 修改时间：16:51:01" itemprop="dateCreated datePublished" datetime="2021-12-01T16:40:55+08:00">2021-12-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">运维</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/12/01/202112011640/" class="post-meta-item leancloud_visitors" data-flag-title="阿里云服务器扩容数据盘无需迁移数据重新挂载" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>987</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>昨天下午，明同学截图告诉我他的阿里云服务器数据硬盘20GB快满，是否可以增加磁盘。这个还算简单，如果我们是早期直接挂载在数据盘的，我们可以后续磁盘不够的时候直接扩容磁盘，但是也不是特别简单在阿里云后台扩容数据硬盘，还需要一些简单的卸载挂载和重新挂载操作。在这篇文章中，老蒋就记录阿里云服务器如何扩容数据盘，以及不影响数据，不至于需要重新备份数据迁移。</p>
+<p>当然我们在扩容阿里云服务器数据盘之前肯定是需要确保数据的安全，比如快照备份数据硬盘和系统磁盘，万一出现问题我们还可以快速恢复数据。</p>
+<h4 id="第一、检查当前数据硬盘及挂载情况"><a href="#第一、检查当前数据硬盘及挂载情况" class="headerlink" title="第一、检查当前数据硬盘及挂载情况"></a>第一、检查当前数据硬盘及挂载情况</h4><p><img src="../images/post/202112011640/1.jpg"></p>
+<p>这里我看到明同学的系统盘有20GB，数据硬盘买的20GB（居然买这么小干嘛的），还有不到4GB将满，他说准备采集一个大数据网站可能硬盘不够用。</p>
+<p><img src="../images/post/202112011640/2.jpg"></p>
+<p>那我们就先到当前服务器数据硬盘进行扩容，他扩容到40GB。不过我们在扩容之后即便重启一下，我们看到的还是挂载的20GB数据盘，还有20GB没有出来，我们需要自己挂载。</p>
+<p><img src="../images/post/202112011640/3.jpg"></p>
+<p>这里老蒋看到一共有40GB，所以我们需要重新挂载和增量数据盘。</p>
+<h4 id="第二、暂停服务器WEB系统以及卸载挂载"><a href="#第二、暂停服务器WEB系统以及卸载挂载" class="headerlink" title="第二、暂停服务器WEB系统以及卸载挂载"></a>第二、暂停服务器WEB系统以及卸载挂载</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/bt stop</span><br><span class="line"></span><br><span class="line">/etc/init.d/nginx stop</span><br><span class="line"></span><br><span class="line">/etc/init.d/mysqld stop</span><br></pre></td></tr></table></figure>
+
+<p>这里我们在卸载挂载之前，还是确保当前WEB服务器暂停。他用的是宝塔面板，所以老蒋把这几个环境暂停，以后我们再开启。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount /dev/vdb1</span><br></pre></td></tr></table></figure>
+
+<p>这里我们卸载挂载。如果无法卸载，我直接强制卸载的”umount -l /dev/vdb1”。</p>
+<h4 id="第三、新建分区重新挂载启动项"><a href="#第三、新建分区重新挂载启动项" class="headerlink" title="第三、新建分区重新挂载启动项"></a>第三、新建分区重新挂载启动项</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk /dev/vdb</span><br></pre></td></tr></table></figure>
+
+<p>这里我们再新建分区。分别输入 d n p 1 1 回车 wq。</p>
+<p><img src="../images/post/202112011640/4.jpg"></p>
+<p>完毕之后我们要开始增量磁盘。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">e2fsck -f /dev/vdb1</span><br><span class="line">resize2fs /dev/vdb1</span><br></pre></td></tr></table></figure>
+
+<p><img src="../images/post/202112011640/5.jpg"></p>
+<p>完毕之后我们需要重新挂载磁盘目录。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/vdb1 /www</span><br></pre></td></tr></table></figure>
+
+<p>同时我们需要检查下启动项是否有启动。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;/dev/vdb1 /www ext3 defaults 0 0&#x27; &gt;&gt; /etc/fstab</span><br></pre></td></tr></table></figure>
+
+<p>如果没有我们需要写入开机启动挂载。最后我们需要重启服务器且启动WEB软件。</p>
+<h4 id="第四、检查扩容磁盘情况"><a href="#第四、检查扩容磁盘情况" class="headerlink" title="第四、检查扩容磁盘情况"></a>第四、检查扩容磁盘情况</h4><p><img src="../images/post/202112011640/6.jpg"></p>
+<p>这里老蒋检查下服务器挂载磁盘情况，看到数据硬盘现在变成40GB，应该是成功的。然后我让明同学检查一下服务器网站是否正常，然后告知一切OK，这样问题就解决。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -388,7 +514,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://xwltz.github.io/2021/11/13/springboot%20no%20scan%20component/">
+    <link itemprop="mainEntityOfPage" href="https://xwltz.github.io/2021/11/13/202111130857/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -401,7 +527,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/13/springboot%20no%20scan%20component/" class="post-title-link" itemprop="url">spring boot 扫描不到描 java模块中的组件</a>
+          <a href="/2021/11/13/202111130857/" class="post-title-link" itemprop="url">spring boot 扫描不到描 java模块中的组件</a>
         </h2>
 
         <div class="post-meta-container">
@@ -411,10 +537,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-11-13 08:57:10 / 修改时间：09:24:14" itemprop="dateCreated datePublished" datetime="2021-11-13T08:57:10+08:00">2021-11-13</time>
+      <time title="创建时间：2021-11-13 08:57:10" itemprop="dateCreated datePublished" datetime="2021-11-13T08:57:10+08:00">2021-11-13</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-12-01 16:48:42" itemprop="dateModified" datetime="2021-12-01T16:48:42+08:00">2021-12-01</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -426,7 +558,7 @@
     </span>
 
   
-    <span id="/2021/11/13/springboot%20no%20scan%20component/" class="post-meta-item leancloud_visitors" data-flag-title="spring boot 扫描不到描 java模块中的组件" title="阅读次数">
+    <span id="/2021/11/13/202111130857/" class="post-meta-item leancloud_visitors" data-flag-title="spring boot 扫描不到描 java模块中的组件" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -459,7 +591,7 @@
     <div class="post-body" itemprop="articleBody">
           <h3 id="SpringBoot扫描不到组件"><a href="#SpringBoot扫描不到组件" class="headerlink" title="SpringBoot扫描不到组件"></a>SpringBoot扫描不到组件</h3><p>最近接手一套基于SpringBoot项目，对项目进行重构调整，将公共部分抽离成子项目。在实践的过程中，发现抽离之后的模板中组件并没有被初始化。于是将排查解决过程中搜集到的方案及知识汇总分享给大家。</p>
 <p>问题原因<br>问题的原因很简单，因多套系统的package命名不一致。比如业务系统的包命名为com.abc.xx，而公共（common）部分的包命名为com.efg.xx，引入公共jar包时默认是无法初始化的。</p>
-<p><img src="../images/post/1.png" alt="img.png"></p>
+<p><img src="../images/post/202111130857/1.png" alt="img.png"></p>
 <p>对于SpringBoot项目，我们知道扫描的路径从启动类所在包开始，扫描当前包及其子级包下的所有文件。上图如果启动类在com.abc包下，肯定是无法扫描到com.def包内的组件的。</p>
 <p>场景延伸<br>SpringBoot的这个机制还延伸出另外两个场景。</p>
 <p>第一个场景是如果SpringBoot的启动类放的包路径靠下，那么在它上级目录中的组件是无法被扫描并初始化的。新手往往会因放错位置导致启动时异常。</p>
@@ -474,7 +606,7 @@
 <p>如果其他项目不需要初始化common中的内容，则可不进行指定。</p>
 <p>自定义@Enable****注解<br>上述方法虽然能够解决问题，但如果直接写包名，难免没有个统一的规范。此时可考虑使用@Enable类型的注解。</p>
 <p>了解SpringBoot机制的朋友都知道，最重要的一个注解便是@EnableAutoConfiguration。类似的，我们定义一个可以通过注解之后便可使用的Enable注解。</p>
-<p><img src="../images/post/2.png" alt="img.png"></p>
+<p><img src="../images/post/202111130857/2.png" alt="img.png"></p>
 <p>定义配置类，在配置类中指定要扫描的包路径：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;com.def.xx&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CommonConfig</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -1109,13 +1241,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">11k</span>
+    <span title="站点总字数">12k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">20 分钟</span>
+    <span title="站点阅读时长">22 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
